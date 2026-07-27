@@ -1,0 +1,9 @@
+# NAME: Claude
+# SOURCE: https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Surge/Claude
+# MIRROR: Graham-lo/surge
+# UPDATED_FROM_UPSTREAM: 2025-06-06
+# NOTE: Maintained mirror for personal Surge configuration.
+
+DOMAIN,cdn.usefathom.com
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
