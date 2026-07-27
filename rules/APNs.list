@@ -1,6 +1,6 @@
 # Apple Push Notification service (APNs)
 # Format: Surge external RULE-SET (no policy in this file)
-# Version: 2026-07-28
+# Version: 2026-07-28.1
 # Sources:
 # - Apple APNs network ranges: support.apple.com/102266
 # - Surge SYSTEM ruleset APNs domains: manual.nssurge.com/rule/ruleset.html
@@ -11,9 +11,10 @@
 # Place the RULE-SET line before RULE-SET,SYSTEM,DIRECT,
 # Apple DIRECT rules, GEOIP,CN,DIRECT and FINAL.
 
-# Official APNs domains contained in Surge SYSTEM
+# APNs domains
 DOMAIN-SUFFIX,push.apple.com
 DOMAIN-SUFFIX,push-apple.com.akadns.net
+DOMAIN-KEYWORD,apple.com.edgekey.net
 
 # Apple-published APNs IPv4 ranges
 IP-CIDR,17.249.0.0/16
