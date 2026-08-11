@@ -40,6 +40,7 @@ DOMAIN,m.api.forter.com
 DOMAIN-KEYWORD,addfd325e6e3
 DOMAIN,zftksc.launches.appsflyersdk.com
 DOMAIN,zftksc.cdn-settings.appsflyersdk.com
+IP-CIDR,13.192.72.8/32,no-resolve
 IP-CIDR,13.192.105.128/32,no-resolve
 IP-CIDR,52.198.187.114/32,no-resolve
 IP-CIDR,57.180.143.38/32,no-resolve
