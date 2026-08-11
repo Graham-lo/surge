@@ -16,6 +16,7 @@ DOMAIN-SUFFIX,binancecnt.com
 DOMAIN-SUFFIX,binancefuture.com
 DOMAIN-SUFFIX,binanceapi.com
 DOMAIN-SUFFIX,bnappzh.co
+DOMAIN-SUFFIX,bnappweb.black
 DOMAIN-SUFFIX,bnbstatic.com
 DOMAIN-SUFFIX,bnbzh.ac
 DOMAIN-SUFFIX,bntrace.com
@@ -72,3 +73,4 @@ IP-CIDR,18.180.191.237/32,no-resolve
 IP-CIDR,120.24.233.110/32,no-resolve
 IP-CIDR,54.65.161.3/32,no-resolve
 IP-CIDR,43.174.242.71/32,no-resolve
+IP-CIDR,43.174.242.196/32,no-resolve
