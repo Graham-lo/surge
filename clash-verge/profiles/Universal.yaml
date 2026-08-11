@@ -99,13 +99,13 @@ rules:
   - RULE-SET,Bybit,Bybit
   - RULE-SET,OKX,OKX
   - RULE-SET,CommonLanDomain,DIRECT
+  - RULE-SET,OpenAI,AI服务
   - RULE-SET,CommonLanIP,DIRECT
   - DOMAIN,dns.alidns.com,DIRECT
   - DOMAIN,doh.pub,DIRECT
   - RULE-SET,APNs,APNs-Proxy
   - DOMAIN-SUFFIX,tradingview.com,TradingView
   - DOMAIN-SUFFIX,tradingview-widget.com,TradingView
-  - RULE-SET,OpenAI,AI服务
   - RULE-SET,Claude,AI服务
   - RULE-SET,AI,AI服务
   - RULE-SET,CommonAI,AI服务
