@@ -1,0 +1,24 @@
+name: Validate rules and public profiles
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check generated rules
+        run: python3 tools/build_rules.py --check
+      - name: Check rule conflicts and profile precedence
+        run: python3 tools/check_rule_conflicts.py
+      - name: Scan for private proxy material
+        run: python3 tools/check_secrets.py

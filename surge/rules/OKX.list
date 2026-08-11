@@ -1,0 +1,25 @@
+# NAME: OKX
+# UPDATED: 2026-08-11
+# SOURCES:
+# - https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Surge/OKX/OKX.list
+# - Surge metadata captured from clean iPhone app launches on 2026-08-11
+# NOTE: Default to one fixed select exit. An optional fallback group may be selected for outage recovery.
+
+DOMAIN-SUFFIX,okx.com
+DOMAIN-SUFFIX,okex.com
+DOMAIN-SUFFIX,oklink.com
+DOMAIN-SUFFIX,okcoin.com
+DOMAIN-SUFFIX,coinall.ltd
+DOMAIN-SUFFIX,cnouyi.pizza
+DOMAIN-SUFFIX,couyi.pizza
+DOMAIN-SUFFIX,okx.com.cdn.cloudflare.net
+DOMAIN,d1w1p0smpsoh5j.cloudfront.net
+DOMAIN,d1nil3qbkxfj92.cloudfront.net
+DOMAIN,d2p7qknqur0nu9.cloudfront.net
+DOMAIN,d3f0nrrzpmxcu1.cloudfront.net
+DOMAIN,ipyp0a.launches.appsflyersdk.com
+DOMAIN,ipyp0a.inapps.appsflyersdk.com
+DOMAIN,ipyp0a.cdn-settings.appsflyersdk.com
+DOMAIN,dkapi.geetest.com
+DOMAIN,cloudauth-device.cn-hongkong.aliyuncs.com
+DOMAIN,videocloud-i18n.byteplusvod.com

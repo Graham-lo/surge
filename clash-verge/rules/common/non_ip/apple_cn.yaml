@@ -1,0 +1,14 @@
+# NAME: common/non_ip/apple_cn
+# GENERATED: tools/build_rules.py from surge/rules/common/non_ip/apple_cn.list
+# FORMAT: Mihomo/Clash Verge classical rule-provider
+payload:
+  - 'DOMAIN,7h15.ru1353t.1s.m4d3.by.5ukk4w.skk.moe'
+  - 'DOMAIN-SUFFIX,apple.com.cn'
+  - 'DOMAIN-SUFFIX,cn.apple.com'
+  - 'DOMAIN-SUFFIX,icloud.com.cn'
+  - 'DOMAIN-SUFFIX,cn.ls.apple.com'
+  - 'DOMAIN,api.smoot.apple.cn'
+  - 'DOMAIN-SUFFIX,cn-ssl.ls.apple.com'
+  - 'DOMAIN,gs-loc-cn.apple.com'
+  - 'DOMAIN-SUFFIX,gspe19-cn-ssl.ls.apple.com'
+  - 'DOMAIN,appleintelligencefeedback.care.apple.com'

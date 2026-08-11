@@ -1,0 +1,10 @@
+# NAME: common/non_ip/apple_intelligence
+# GENERATED: tools/build_rules.py from surge/rules/common/non_ip/apple_intelligence.list
+# FORMAT: Mihomo/Clash Verge classical rule-provider
+payload:
+  - 'DOMAIN,7h15.ru1353t.1s.m4d3.by.5ukk4w.skk.moe'
+  - 'DOMAIN,cp4.cloudflare.com'
+  - 'DOMAIN,apple-relay.apple.com'
+  - 'DOMAIN,gspe1-ssl.ls.apple.com'
+  - 'DOMAIN,apple-relay.cloudflare.com'
+  - 'DOMAIN,apple-relay.fastly-edge.com'

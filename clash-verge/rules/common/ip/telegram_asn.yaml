@@ -1,0 +1,10 @@
+# NAME: common/ip/telegram_asn
+# GENERATED: tools/build_rules.py from surge/rules/common/ip/telegram_asn.list
+# FORMAT: Mihomo/Clash Verge classical rule-provider
+payload:
+  - 'DOMAIN,7h15.ru1353t.1s.m4d3.by.5ukk4w.skk.moe'
+  - 'IP-ASN,62041'
+  - 'IP-ASN,62014'
+  - 'IP-ASN,59930'
+  - 'IP-ASN,44907'
+  - 'IP-ASN,211157'

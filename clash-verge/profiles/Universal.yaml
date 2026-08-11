@@ -1,0 +1,126 @@
+# Node-free Mihomo profile for Clash Verge Rev.
+# Add private proxy-providers locally; do not commit subscription URLs.
+
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - '*.home.arpa'
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+
+proxy-providers: {}
+
+proxy-groups:
+  - name: AI服务
+    type: select
+    include-all-providers: true
+    filter: '(?i)\[AI\]'
+    proxies: [DIRECT]
+  - name: 日常代理
+    type: select
+    include-all-providers: true
+    filter: '(?i)\[REG\]'
+    proxies: [DIRECT]
+  - name: Binance
+    type: select
+    include-all-providers: true
+    filter: '(?i)\[BIN\]'
+    proxies: [DIRECT]
+  - name: Bybit
+    type: select
+    include-all-providers: true
+    filter: '(?i)\[BYB\]'
+    proxies: [DIRECT]
+  - name: OKX
+    type: select
+    include-all-providers: true
+    filter: '(?i)\[OKX\]'
+    proxies: [DIRECT]
+  - name: TradingView
+    type: select
+    include-all-providers: true
+    filter: '(?i)\[TV\]'
+    proxies: [DIRECT]
+  - name: APNs-Proxy
+    type: select
+    proxies: [日常代理, DIRECT]
+
+rule-providers:
+  Binance: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/Binance.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/Binance.yaml'}
+  Bybit: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/Bybit.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/Bybit.yaml'}
+  OKX: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OKX.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OKX.yaml'}
+  APNs: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/APNs.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/APNs.yaml'}
+  OpenAI: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OpenAI.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OpenAI.yaml'}
+  Claude: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/Claude.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/Claude.yaml'}
+  AI: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/AI.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/AI.yaml'}
+  CommonLanDomain: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/lan.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/lan.yaml'}
+  CommonLanIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/lan.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/lan.yaml'}
+  CommonAI: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/ai.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/ai.yaml'}
+  CommonAppleIntelligence: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/apple_intelligence.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/apple_intelligence.yaml'}
+  CommonTelegram: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/telegram.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/telegram.yaml'}
+  CommonStream: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/stream.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/stream.yaml'}
+  CommonAppleCN: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/apple_cn.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/apple_cn.yaml'}
+  CommonDomestic: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/domestic.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/domestic.yaml'}
+  CommonDirect: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/direct.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/direct.yaml'}
+  CommonGlobal: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/global.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/global.yaml'}
+  CommonAIIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/ai.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/ai.yaml'}
+  CommonTelegramIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/telegram.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/telegram.yaml'}
+  CommonTelegramASN: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/telegram_asn.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/telegram_asn.yaml'}
+  CommonStreamIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/stream.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/stream.yaml'}
+  CommonDomesticIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/domestic.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/domestic.yaml'}
+  CommonChinaIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/china_ip.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/china_ip.yaml'}
+
+rules:
+  - RULE-SET,Binance,Binance
+  - RULE-SET,Bybit,Bybit
+  - RULE-SET,OKX,OKX
+  - RULE-SET,CommonLanDomain,DIRECT
+  - RULE-SET,CommonLanIP,DIRECT
+  - DOMAIN,dns.alidns.com,DIRECT
+  - DOMAIN,doh.pub,DIRECT
+  - RULE-SET,APNs,APNs-Proxy
+  - DOMAIN-SUFFIX,tradingview.com,TradingView
+  - DOMAIN-SUFFIX,tradingview-widget.com,TradingView
+  - RULE-SET,OpenAI,AI服务
+  - RULE-SET,Claude,AI服务
+  - RULE-SET,AI,AI服务
+  - RULE-SET,CommonAI,AI服务
+  - RULE-SET,CommonAppleIntelligence,AI服务
+  - RULE-SET,CommonTelegram,日常代理
+  - RULE-SET,CommonStream,日常代理
+  - RULE-SET,CommonAppleCN,DIRECT
+  - RULE-SET,CommonDomestic,DIRECT
+  - RULE-SET,CommonDirect,DIRECT
+  - RULE-SET,CommonGlobal,日常代理
+  - RULE-SET,CommonAIIP,AI服务
+  - RULE-SET,CommonTelegramIP,日常代理
+  - RULE-SET,CommonTelegramASN,日常代理
+  - RULE-SET,CommonStreamIP,日常代理
+  - RULE-SET,CommonDomesticIP,DIRECT
+  - RULE-SET,CommonChinaIP,DIRECT
+  - GEOIP,CN,DIRECT,no-resolve
+  - MATCH,日常代理

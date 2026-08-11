@@ -1,0 +1,15 @@
+{
+  "domain_cross_policy": {
+    "count": 208,
+    "sha256": "59a55377df6e9052aebbc9d733b49734f6497ee3f60db21c2cc5e08d00070235"
+  },
+  "exact_cross_policy": {
+    "count": 98,
+    "sha256": "353f84d66a281846e288102510acd616d4eae42a2c7820734b44cbb88fab51ac"
+  },
+  "ip_cross_policy": {
+    "count": 24,
+    "sha256": "e6638411043f5ea5c77df0f8a2542ea1ec0f4d2e3ed8af247a3d3c6667a5ccf4"
+  },
+  "schema": 1
+}

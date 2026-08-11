@@ -1,0 +1,22 @@
+# NAME: OKX
+# GENERATED: tools/build_rules.py from surge/rules/OKX.list
+# FORMAT: Shadowrocket RULE-SET (policy omitted)
+
+DOMAIN-SUFFIX,okx.com
+DOMAIN-SUFFIX,okex.com
+DOMAIN-SUFFIX,oklink.com
+DOMAIN-SUFFIX,okcoin.com
+DOMAIN-SUFFIX,coinall.ltd
+DOMAIN-SUFFIX,cnouyi.pizza
+DOMAIN-SUFFIX,couyi.pizza
+DOMAIN-SUFFIX,okx.com.cdn.cloudflare.net
+DOMAIN,d1w1p0smpsoh5j.cloudfront.net
+DOMAIN,d1nil3qbkxfj92.cloudfront.net
+DOMAIN,d2p7qknqur0nu9.cloudfront.net
+DOMAIN,d3f0nrrzpmxcu1.cloudfront.net
+DOMAIN,ipyp0a.launches.appsflyersdk.com
+DOMAIN,ipyp0a.inapps.appsflyersdk.com
+DOMAIN,ipyp0a.cdn-settings.appsflyersdk.com
+DOMAIN,dkapi.geetest.com
+DOMAIN,cloudauth-device.cn-hongkong.aliyuncs.com
+DOMAIN,videocloud-i18n.byteplusvod.com

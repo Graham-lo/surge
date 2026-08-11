@@ -1,0 +1,11 @@
+[Proxy]
+# Copy this file to Private-Proxies.dconf beside Universal.conf.
+# Never commit the copied file. Replace only the commented examples locally.
+# Naming convention: [score][service tags][region] display name
+# Lower score numbers appear first in the manual selection list.
+# Supported tags: [AI] [REG] [BIN] [BYB] [OKX] [TV]
+# One endpoint may be declared more than once with different names when rankings differ by service.
+#
+# [001][AI][SG] Residential Primary = <protocol>, <host>, <port>, <private parameters>
+# [001][REG][BIN][BYB][OKX][TV][SG] Regular Primary = <protocol>, <host>, <port>, <private parameters>
+# [002][REG][BIN][BYB][OKX][TV][HK] Regular Backup = <protocol>, <host>, <port>, <private parameters>
