@@ -1,93 +1,78 @@
-# Surge
-Weibo
-```properties
-[Script]
-http-response ^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua) requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_launch.js
-http-response ^https?://m?api\.weibo\.c(n|om)/2/(statuses/(unread|extend|positives/get|(friends|video)(/|_)(mix)?timeline)|stories/(video_stream|home_list)|(groups|fangle)/timeline|profile/statuses|comments/build_comments|photo/recommend_list|service/picfeed|searchall|cardlist|page|!/(photos/pic_recommend_status|live/media_homelist)|video/tiny_stream_video_list|photo/info|remind/unread_count) requires-body=1,max-size=-1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/wb_ad.js
-[MITM]
-hostname = api.weibo.cn, mapi.weibo.com, *.uve.weibo.com
+# Graham Network Rules
+
+This repository maintains node-free routing rules and generic configurations
+for three clients. Proxy nodes, subscription URLs, credentials and local
+certificates are intentionally excluded.
+
+## Platforms
+
+| Client | Rules | Generic profile |
+| --- | --- | --- |
+| Surge Mac / iOS | [`surge/rules`](surge/rules) | [`surge/profiles/Universal.conf`](surge/profiles/Universal.conf) |
+| Shadowrocket | [`shadowrocket/rules`](shadowrocket/rules) | [`shadowrocket/profiles/Universal.conf`](shadowrocket/profiles/Universal.conf) |
+| Clash Verge Rev / Mihomo | [`clash-verge/rules`](clash-verge/rules) | [`clash-verge/profiles/Universal.yaml`](clash-verge/profiles/Universal.yaml) |
+
+The maintained service sets are AI, OpenAI, Claude, APNs, Binance, Bybit and
+OKX. Sixteen common sets for LAN, AI, Apple Intelligence, Telegram, streaming,
+domestic/global routing and IP routing are also stored in this repository as
+editable static files. Clients do not fetch rules from another rules project.
+
+Rules for Surge are canonical; the Shadowrocket and Clash Verge variants are
+generated automatically. Public profiles use manual `select` groups only. The
+automatic fallback groups used by the Mac mini gateway remain in its private
+local profile and are intentionally not published here.
+
+## Maintenance
+
+```bash
+python3 tools/build_rules.py
+python3 tools/build_rules.py --check
+python3 tools/check_rule_conflicts.py
+python3 tools/check_secrets.py
 ```
 
-Display netflix ratings（IMDb、douban）
-```properties
-[Script]
-nf_rating.js = type=http-request,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
-nf_rating.js = type=http-response,requires-body=1,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
-# 单集评分
-nf_rating_season.js = type=http-response,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/warmer/.+type=show-ath,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating_season.js
-[MITM]
-hostname = ios-*.prod.ftl.netflix.com,ios.prod.ftl.netflix.com
+`rules/` is a generated compatibility mirror for existing Surge URLs. New
+profiles should use `surge/rules/`. `conflict-baseline.json` locks reviewed
+cross-policy overlaps and first-match precedence. See
+[`CONTRIBUTING.md`](CONTRIBUTING.md) for the update workflow and validation
+rules.
+
+## Private configuration
+
+Keep all private material outside this repository. The platform READMEs explain
+how to attach local nodes or subscriptions. Use policy-name tags to keep the
+same behavior across clients:
+
+- `[AI]`: clean residential AI candidates.
+- `[REG]`: normal daily candidates.
+- `[BIN]`, `[BYB]`, `[OKX]`: exchange candidates.
+- `[TV]`: TradingView candidates.
+- `[001]`, `[002]`, etc.: score order, best first in the manual picker.
+
+## Common rules and independence
+
+The files below `surge/rules/common/` are repository-owned working copies. They
+were initially imported from a reviewed snapshot, are committed in full, and
+may be edited here even if the original project disappears. The source commit
+and file hashes are recorded in `common-rules.lock.json`; licensing and
+attribution are in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
+## Stable raw URLs
+
+Example Surge URL:
+
+```text
+https://raw.githubusercontent.com/Graham-lo/surge/master/surge/rules/OpenAI.list
 ```
 
-Display jd historical price
-```properties
-# 不生效或失效的检查一下配置有没有这两条复写，删除试试
-# ^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=start - reject
-# ^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=(start|queryMaterialAdverts) - reject
-[Script]
-http-response ^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js
-[MITM]
-hostname = api.m.jd.com
+Example Shadowrocket URL:
+
+```text
+https://raw.githubusercontent.com/Graham-lo/surge/master/shadowrocket/rules/OpenAI.list
 ```
 
-Display taobao historical price
-```properties
-# 不生效或失效的需要卸载 tb 重装，注意不开脚本进 tb 会失效
-[Script]
-http-response ^http://.+/amdc/mobileDispatch requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
-http-response ^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail requires-body=1,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
-[MITM]
-hostname = trade-acs.m.taobao.com
-```
+Example Clash Verge rule-provider URL:
 
-DingDing clock in
-```properties
-[Script]
-cron "0 9,18 * * 1-5" script-path=https://raw.githubusercontent.com/yichahucha/surge/master/clock_in.js
-```
-
-# Quan-X
-
-Weibo
-```properties
-[rewrite_local]
-^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua) url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/wb_launch.js
-^https?://m?api\.weibo\.c(n|om)/2/(statuses/(unread|extend|positives/get|(friends|video)(/|_)(mix)?timeline)|stories/(video_stream|home_list)|(groups|fangle)/timeline|profile/statuses|comments/build_comments|photo/recommend_list|service/picfeed|searchall|cardlist|page|!/(photos/pic_recommend_status|live/media_homelist)|video/tiny_stream_video_list|photo/info|remind/unread_count) url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/wb_ad.js
-[mitm]
-hostname = api.weibo.cn, mapi.weibo.com, *.uve.weibo.com
-```
-
-Display netflix ratings（IMDb、douban）
-```properties
-[rewrite_local]
-^https?://ios(-.*)?\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D url script-request-header https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
-^https?://ios(-.*)?\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
-# 单集评分
-^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/warmer/.+type=show-ath url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating_season.js
-[mitm]
-hostname = ios-*.prod.ftl.netflix.com,ios.prod.ftl.netflix.com
-```
-
-Display jd historical price
-```properties
-[rewrite_local]
-^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js
-[mitm]
-hostname = api.m.jd.com
-```
-
-Display taobao historical price
-```properties
-# 不生效或失效的需要卸载 tb 重装，注意不开脚本进 tb 会失效
-[rewrite_local]
-^http://.+/amdc/mobileDispatch url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
-^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
-[mitm]
-hostname = trade-acs.m.taobao.com
-```
-
-DingDing clock in
-```properties
-[task_local]
-0 9,18 * * 1-5 https://raw.githubusercontent.com/yichahucha/surge/master/clock_in.js
+```text
+https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OpenAI.yaml
 ```

@@ -1,0 +1,25 @@
+# NAME: Claude
+# FORMAT: Surge RULE-SET (policy omitted)
+# SOURCE: https://github.com/v2fly/domain-list-community/blob/master/data/anthropic
+# SOURCE: local Claude Desktop traffic observation on 2026-07-28
+# MIRROR: Graham-lo/surge
+# UPDATED: 2026-07-29
+# NOTE: First-party domains work on Surge Mac/iOS; process-scoped rules are Surge Mac only.
+
+# Claude / Anthropic first-party
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claudemcpclient.com
+DOMAIN-SUFFIX,claudemcpcontent.com
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN,servd-anthropic-website.b-cdn.net
+
+# Supporting telemetry observed from Claude
+DOMAIN,cdn.usefathom.com
+DOMAIN,o1158394.ingest.us.sentry.io
+
+# Surge Mac only: keep shared login/telemetry scoped to Claude
+AND,((PROCESS-NAME,Claude*),(DOMAIN,accounts.google.com))
+AND,((PROCESS-NAME,Claude*),(DOMAIN,browser-intake-us5-datadoghq.com))

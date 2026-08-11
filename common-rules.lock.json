@@ -1,0 +1,104 @@
+{
+  "files": {
+    "ip/ai": {
+      "license": "AGPL-3.0-only",
+      "sha256": "d2ab24c3306cf912cd1b425b1e1322245cbe0d8beee8badaab7d1bdaf332ea95",
+      "source": "List/ip/ai.conf",
+      "surge": "surge/rules/common/ip/ai.list"
+    },
+    "ip/china_ip": {
+      "license": "CC-BY-SA-2.0",
+      "sha256": "73d639d952c1e77e699da69deebfb16683ad0cda15de771e19ee004616815740",
+      "source": "List/ip/china_ip.conf",
+      "surge": "surge/rules/common/ip/china_ip.list"
+    },
+    "ip/domestic": {
+      "license": "AGPL-3.0-only",
+      "sha256": "99fd01e3b16bb3715dc2a07f5e3c4fde213c2031469256282c55aa7e1ed46494",
+      "source": "List/ip/domestic.conf",
+      "surge": "surge/rules/common/ip/domestic.list"
+    },
+    "ip/lan": {
+      "license": "AGPL-3.0-only",
+      "sha256": "0866aadd6e3a726914b2db4f001c00a2df739bf7639795b475aef4ab3f676806",
+      "source": "List/ip/lan.conf",
+      "surge": "surge/rules/common/ip/lan.list"
+    },
+    "ip/stream": {
+      "license": "AGPL-3.0-only",
+      "sha256": "e99e1e589e7bb2c92f9f68dbfed59e3e1182adfb78eeedb8d74d62b5156dc348",
+      "source": "List/ip/stream.conf",
+      "surge": "surge/rules/common/ip/stream.list"
+    },
+    "ip/telegram": {
+      "license": "AGPL-3.0-only",
+      "sha256": "62025cb8bdd07176a628886d32f487458bb270228062a460aee4f70c20a75d55",
+      "source": "List/ip/telegram.conf",
+      "surge": "surge/rules/common/ip/telegram.list"
+    },
+    "ip/telegram_asn": {
+      "license": "AGPL-3.0-only",
+      "sha256": "d6d8f75ed1cae4c7de00c86a834c5f630abbc614f28f50f0a63e741ffa8d2cf9",
+      "source": "List/ip/telegram_asn.conf",
+      "surge": "surge/rules/common/ip/telegram_asn.list"
+    },
+    "non_ip/ai": {
+      "license": "AGPL-3.0-only",
+      "sha256": "7a63c471d545470987ab9e14493cf9d47b6227137b9308c99cd58d02485d62ff",
+      "source": "List/non_ip/ai.conf",
+      "surge": "surge/rules/common/non_ip/ai.list"
+    },
+    "non_ip/apple_cn": {
+      "license": "AGPL-3.0-only",
+      "sha256": "a31f9e98c5a4fdd585a7c78b6f3a1994015ab54a57a3d82057bd17f278f6a76f",
+      "source": "List/non_ip/apple_cn.conf",
+      "surge": "surge/rules/common/non_ip/apple_cn.list"
+    },
+    "non_ip/apple_intelligence": {
+      "license": "AGPL-3.0-only",
+      "sha256": "728d4a842e4507e042b929ed599b9a9a3de4e89ba4a29438594470dd40c1a5f8",
+      "source": "List/non_ip/apple_intelligence.conf",
+      "surge": "surge/rules/common/non_ip/apple_intelligence.list"
+    },
+    "non_ip/direct": {
+      "license": "AGPL-3.0-only",
+      "sha256": "36d007df784ca629f228a60db8b66a9b4f65154de4704213bf70a1e05fd12291",
+      "source": "List/non_ip/direct.conf",
+      "surge": "surge/rules/common/non_ip/direct.list"
+    },
+    "non_ip/domestic": {
+      "license": "AGPL-3.0-only",
+      "sha256": "56809cd8399666433acb1229c3a472667a32c86fc2a0b9861a5dca54020564aa",
+      "source": "List/non_ip/domestic.conf",
+      "surge": "surge/rules/common/non_ip/domestic.list"
+    },
+    "non_ip/global": {
+      "license": "AGPL-3.0-only",
+      "sha256": "0a48f1f27effe13fa8e3f55e347a59c4d40778adf62e6c18448b59a8a4e4b5d8",
+      "source": "List/non_ip/global.conf",
+      "surge": "surge/rules/common/non_ip/global.list"
+    },
+    "non_ip/lan": {
+      "license": "AGPL-3.0-only",
+      "sha256": "de25958cecccfeb384d58d989ed407f8160575e4aa9a047f9d954eaef68788ae",
+      "source": "List/non_ip/lan.conf",
+      "surge": "surge/rules/common/non_ip/lan.list"
+    },
+    "non_ip/stream": {
+      "license": "AGPL-3.0-only",
+      "sha256": "e35f4e37b3e1a39c6c2a1c09750299c4318feb72b65a6e79a18b4a2b39f44ce6",
+      "source": "List/non_ip/stream.conf",
+      "surge": "surge/rules/common/non_ip/stream.list"
+    },
+    "non_ip/telegram": {
+      "license": "AGPL-3.0-only",
+      "sha256": "bccbd162554d2cb56b16cdd59fbc2d1abec645bd53c9db18460137ffccbbc2a2",
+      "source": "List/non_ip/telegram.conf",
+      "surge": "surge/rules/common/non_ip/telegram.list"
+    }
+  },
+  "note": "Static snapshot only; clients use this repository, not the upstream URL.",
+  "schema": 1,
+  "source_commit": "f1c1c294a05d3a81901e7312bd4160382cc39970",
+  "source_repository": "https://github.com/SukkaLab/ruleset.skk.moe"
+}

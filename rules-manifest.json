@@ -1,0 +1,193 @@
+{
+  "common_rules": {
+    "ip/ai": {
+      "clash_verge": "clash-verge/rules/common/ip/ai.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 24,
+      "sha256": "d2ab24c3306cf912cd1b425b1e1322245cbe0d8beee8badaab7d1bdaf332ea95",
+      "shadowrocket": "shadowrocket/rules/common/ip/ai.list",
+      "surge": "surge/rules/common/ip/ai.list"
+    },
+    "ip/china_ip": {
+      "clash_verge": "clash-verge/rules/common/ip/china_ip.yaml",
+      "license": "CC-BY-SA-2.0",
+      "rule_count": 3912,
+      "sha256": "73d639d952c1e77e699da69deebfb16683ad0cda15de771e19ee004616815740",
+      "shadowrocket": "shadowrocket/rules/common/ip/china_ip.list",
+      "surge": "surge/rules/common/ip/china_ip.list"
+    },
+    "ip/domestic": {
+      "clash_verge": "clash-verge/rules/common/ip/domestic.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 3,
+      "sha256": "99fd01e3b16bb3715dc2a07f5e3c4fde213c2031469256282c55aa7e1ed46494",
+      "shadowrocket": "shadowrocket/rules/common/ip/domestic.list",
+      "surge": "surge/rules/common/ip/domestic.list"
+    },
+    "ip/lan": {
+      "clash_verge": "clash-verge/rules/common/ip/lan.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 12,
+      "sha256": "0866aadd6e3a726914b2db4f001c00a2df739bf7639795b475aef4ab3f676806",
+      "shadowrocket": "shadowrocket/rules/common/ip/lan.list",
+      "surge": "surge/rules/common/ip/lan.list"
+    },
+    "ip/stream": {
+      "clash_verge": "clash-verge/rules/common/ip/stream.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 20,
+      "sha256": "e99e1e589e7bb2c92f9f68dbfed59e3e1182adfb78eeedb8d74d62b5156dc348",
+      "shadowrocket": "shadowrocket/rules/common/ip/stream.list",
+      "surge": "surge/rules/common/ip/stream.list"
+    },
+    "ip/telegram": {
+      "clash_verge": "clash-verge/rules/common/ip/telegram.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 16,
+      "sha256": "62025cb8bdd07176a628886d32f487458bb270228062a460aee4f70c20a75d55",
+      "shadowrocket": "shadowrocket/rules/common/ip/telegram.list",
+      "surge": "surge/rules/common/ip/telegram.list"
+    },
+    "ip/telegram_asn": {
+      "clash_verge": "clash-verge/rules/common/ip/telegram_asn.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 6,
+      "sha256": "d6d8f75ed1cae4c7de00c86a834c5f630abbc614f28f50f0a63e741ffa8d2cf9",
+      "shadowrocket": "shadowrocket/rules/common/ip/telegram_asn.list",
+      "surge": "surge/rules/common/ip/telegram_asn.list"
+    },
+    "non_ip/ai": {
+      "clash_verge": "clash-verge/rules/common/non_ip/ai.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 51,
+      "sha256": "7a63c471d545470987ab9e14493cf9d47b6227137b9308c99cd58d02485d62ff",
+      "shadowrocket": "shadowrocket/rules/common/non_ip/ai.list",
+      "surge": "surge/rules/common/non_ip/ai.list"
+    },
+    "non_ip/apple_cn": {
+      "clash_verge": "clash-verge/rules/common/non_ip/apple_cn.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 10,
+      "sha256": "a31f9e98c5a4fdd585a7c78b6f3a1994015ab54a57a3d82057bd17f278f6a76f",
+      "shadowrocket": "shadowrocket/rules/common/non_ip/apple_cn.list",
+      "surge": "surge/rules/common/non_ip/apple_cn.list"
+    },
+    "non_ip/apple_intelligence": {
+      "clash_verge": "clash-verge/rules/common/non_ip/apple_intelligence.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 6,
+      "sha256": "728d4a842e4507e042b929ed599b9a9a3de4e89ba4a29438594470dd40c1a5f8",
+      "shadowrocket": "shadowrocket/rules/common/non_ip/apple_intelligence.list",
+      "surge": "surge/rules/common/non_ip/apple_intelligence.list"
+    },
+    "non_ip/direct": {
+      "clash_verge": "clash-verge/rules/common/non_ip/direct.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 218,
+      "sha256": "36d007df784ca629f228a60db8b66a9b4f65154de4704213bf70a1e05fd12291",
+      "shadowrocket": "shadowrocket/rules/common/non_ip/direct.list",
+      "surge": "surge/rules/common/non_ip/direct.list"
+    },
+    "non_ip/domestic": {
+      "clash_verge": "clash-verge/rules/common/non_ip/domestic.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 869,
+      "sha256": "56809cd8399666433acb1229c3a472667a32c86fc2a0b9861a5dca54020564aa",
+      "shadowrocket": "shadowrocket/rules/common/non_ip/domestic.list",
+      "surge": "surge/rules/common/non_ip/domestic.list"
+    },
+    "non_ip/global": {
+      "clash_verge": "clash-verge/rules/common/non_ip/global.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 1270,
+      "sha256": "0a48f1f27effe13fa8e3f55e347a59c4d40778adf62e6c18448b59a8a4e4b5d8",
+      "shadowrocket": "shadowrocket/rules/common/non_ip/global.list",
+      "surge": "surge/rules/common/non_ip/global.list"
+    },
+    "non_ip/lan": {
+      "clash_verge": "clash-verge/rules/common/non_ip/lan.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 50,
+      "sha256": "de25958cecccfeb384d58d989ed407f8160575e4aa9a047f9d954eaef68788ae",
+      "shadowrocket": "shadowrocket/rules/common/non_ip/lan.list",
+      "surge": "surge/rules/common/non_ip/lan.list"
+    },
+    "non_ip/stream": {
+      "clash_verge": "clash-verge/rules/common/non_ip/stream.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 336,
+      "sha256": "e35f4e37b3e1a39c6c2a1c09750299c4318feb72b65a6e79a18b4a2b39f44ce6",
+      "shadowrocket": "shadowrocket/rules/common/non_ip/stream.list",
+      "surge": "surge/rules/common/non_ip/stream.list"
+    },
+    "non_ip/telegram": {
+      "clash_verge": "clash-verge/rules/common/non_ip/telegram.yaml",
+      "license": "AGPL-3.0-only",
+      "rule_count": 15,
+      "sha256": "bccbd162554d2cb56b16cdd59fbc2d1abec645bd53c9db18460137ffccbbc2a2",
+      "shadowrocket": "shadowrocket/rules/common/non_ip/telegram.list",
+      "surge": "surge/rules/common/non_ip/telegram.list"
+    }
+  },
+  "generated_by": "tools/build_rules.py",
+  "rules": {
+    "AI": {
+      "clash_verge": "clash-verge/rules/AI.yaml",
+      "legacy_surge": "rules/AI.list",
+      "rule_count": 137,
+      "sha256": "45806acd72b0d18ea7b12993929488760ed3ca5f2f954effc7acea0e04994fbc",
+      "shadowrocket": "shadowrocket/rules/AI.list",
+      "surge": "surge/rules/AI.list"
+    },
+    "APNs": {
+      "clash_verge": "clash-verge/rules/APNs.yaml",
+      "legacy_surge": "rules/APNs.list",
+      "rule_count": 12,
+      "sha256": "db57bb703535e835e1aaff26de66b3fb4c70ae1d3dffac86860a9d1db4e86d54",
+      "shadowrocket": "shadowrocket/rules/APNs.list",
+      "surge": "surge/rules/APNs.list"
+    },
+    "Binance": {
+      "clash_verge": "clash-verge/rules/Binance.yaml",
+      "legacy_surge": "rules/Binance.list",
+      "rule_count": 69,
+      "sha256": "398c5e6ab139bc753e501e40b4db6825dc98c4fa559b2993d6222f004db8312e",
+      "shadowrocket": "shadowrocket/rules/Binance.list",
+      "surge": "surge/rules/Binance.list"
+    },
+    "Bybit": {
+      "clash_verge": "clash-verge/rules/Bybit.yaml",
+      "legacy_surge": "rules/Bybit.list",
+      "rule_count": 37,
+      "sha256": "5f2326cbddb93f0258daa5424be4df1380aad072c5dfef38959f545559ea9975",
+      "shadowrocket": "shadowrocket/rules/Bybit.list",
+      "surge": "surge/rules/Bybit.list"
+    },
+    "Claude": {
+      "clash_verge": "clash-verge/rules/Claude.yaml",
+      "legacy_surge": "rules/Claude.list",
+      "rule_count": 12,
+      "sha256": "30a921fff074f23b6793ddcb3ac6e9bee51fa5a241be124c11ffb7f0ff5358d3",
+      "shadowrocket": "shadowrocket/rules/Claude.list",
+      "surge": "surge/rules/Claude.list"
+    },
+    "OKX": {
+      "clash_verge": "clash-verge/rules/OKX.yaml",
+      "legacy_surge": "rules/OKX.list",
+      "rule_count": 18,
+      "sha256": "09b846bdaca0f6c4a7567d041ad414bcd999542a5432d3a4df37ec1425230c5b",
+      "shadowrocket": "shadowrocket/rules/OKX.list",
+      "surge": "surge/rules/OKX.list"
+    },
+    "OpenAI": {
+      "clash_verge": "clash-verge/rules/OpenAI.yaml",
+      "legacy_surge": "rules/OpenAI.list",
+      "rule_count": 45,
+      "sha256": "e630f30ef759f943f4e519f55c419b3d9f9d760cf9d094eca38f12455819e96b",
+      "shadowrocket": "shadowrocket/rules/OpenAI.list",
+      "surge": "surge/rules/OpenAI.list"
+    }
+  },
+  "schema": 1,
+  "source_of_truth": "surge/rules"
+}

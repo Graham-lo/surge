@@ -1,0 +1,16 @@
+# NAME: Claude
+# GENERATED: tools/build_rules.py from surge/rules/Claude.list
+# FORMAT: Mihomo/Clash Verge classical rule-provider
+payload:
+  - 'DOMAIN-SUFFIX,anthropic.com'
+  - 'DOMAIN-SUFFIX,clau.de'
+  - 'DOMAIN-SUFFIX,claude.ai'
+  - 'DOMAIN-SUFFIX,claude.com'
+  - 'DOMAIN-SUFFIX,claudemcpclient.com'
+  - 'DOMAIN-SUFFIX,claudemcpcontent.com'
+  - 'DOMAIN-SUFFIX,claudeusercontent.com'
+  - 'DOMAIN,servd-anthropic-website.b-cdn.net'
+  - 'DOMAIN,cdn.usefathom.com'
+  - 'DOMAIN,o1158394.ingest.us.sentry.io'
+  - 'AND,((PROCESS-NAME-REGEX,(?i)^Claude.*),(DOMAIN,accounts.google.com))'
+  - 'AND,((PROCESS-NAME-REGEX,(?i)^Claude.*),(DOMAIN,browser-intake-us5-datadoghq.com))'
