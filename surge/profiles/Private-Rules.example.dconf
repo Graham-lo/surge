@@ -1,0 +1,12 @@
+# Copy to Private-Rules.dconf beside Universal.conf and replace the source IP.
+# Reserve the address in DHCP first. These shared SDK domains must stay scoped
+# to the iPhone that runs Claude so unrelated clients are not routed as AI.
+
+# Confirmed during repeated Claude iOS cold starts, conversations and long tasks.
+AND,((SRC-IP,192.168.1.123),(DOMAIN,browser-intake-us5-datadoghq.com)),AI服务
+AND,((SRC-IP,192.168.1.123),(DOMAIN,api3.siftscience.com)),AI服务
+AND,((SRC-IP,192.168.1.123),(DOMAIN,3.datadog.pool.ntp.org)),AI服务
+
+# Correlated with Claude iOS cold-start subscription and push initialization.
+AND,((SRC-IP,192.168.1.123),(DOMAIN,api.revenuecat.com)),AI服务
+AND,((SRC-IP,192.168.1.123),(DOMAIN,fcmtoken.googleapis.com)),AI服务
