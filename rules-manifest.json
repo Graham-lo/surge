@@ -166,8 +166,8 @@
     "Claude": {
       "clash_verge": "clash-verge/rules/Claude.yaml",
       "legacy_surge": "rules/Claude.list",
-      "rule_count": 12,
-      "sha256": "30a921fff074f23b6793ddcb3ac6e9bee51fa5a241be124c11ffb7f0ff5358d3",
+      "rule_count": 16,
+      "sha256": "27eb05e7d27e021bba33f12875934abb9b2a406d33b89dc0a1af21e9cf929621",
       "shadowrocket": "shadowrocket/rules/Claude.list",
       "surge": "surge/rules/Claude.list"
     },

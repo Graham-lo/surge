@@ -14,3 +14,7 @@ payload:
   - 'DOMAIN,o1158394.ingest.us.sentry.io'
   - 'AND,((PROCESS-NAME-REGEX,(?i)^Claude.*),(DOMAIN,accounts.google.com))'
   - 'AND,((PROCESS-NAME-REGEX,(?i)^Claude.*),(DOMAIN,browser-intake-us5-datadoghq.com))'
+  - 'AND,((PROCESS-NAME-REGEX,(?i)^Claude.*),(DOMAIN,api3.siftscience.com))'
+  - 'AND,((PROCESS-NAME-REGEX,(?i)^Claude.*),(DOMAIN,3.datadog.pool.ntp.org))'
+  - 'AND,((PROCESS-NAME-REGEX,(?i)^Claude.*),(DOMAIN,api.revenuecat.com))'
+  - 'AND,((PROCESS-NAME-REGEX,(?i)^Claude.*),(DOMAIN,fcmtoken.googleapis.com))'

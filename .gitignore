@@ -5,6 +5,8 @@ __pycache__/
 # Private client material
 Private-Proxies.dconf
 private-proxies.dconf
+Private-Rules.dconf
+private-rules.dconf
 Private-Providers.yaml
 private-providers.yaml
 *.private.conf

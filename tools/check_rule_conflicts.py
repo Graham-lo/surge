@@ -21,9 +21,9 @@ RULESETS = (
     ("Bybit", "BYB"),
     ("OKX", "OKX"),
     ("common/non_ip/lan", "DIRECT"),
+    ("OpenAI", "AI"),
     ("common/ip/lan", "DIRECT"),
     ("APNs", "APNS"),
-    ("OpenAI", "AI"),
     ("Claude", "AI"),
     ("AI", "AI"),
     ("common/non_ip/ai", "AI"),
@@ -54,9 +54,9 @@ PROFILE_TOKENS = {
         "RULE-SET,Bybit,Bybit",
         "RULE-SET,OKX,OKX",
         "RULE-SET,CommonLanDomain,DIRECT",
+        "RULE-SET,OpenAI,AI服务",
         "RULE-SET,CommonLanIP,DIRECT",
         "RULE-SET,APNs,APNs-Proxy",
-        "RULE-SET,OpenAI,AI服务",
         "RULE-SET,Claude,AI服务",
         "RULE-SET,AI,AI服务",
         "RULE-SET,CommonAI,AI服务",
@@ -75,6 +75,11 @@ PROFILE_TOKENS = {
         "RULE-SET,CommonChinaIP,DIRECT",
     ),
 }
+
+SURGE_OPENAI_EXTENDED_RULE = (
+    "RULE-SET,https://raw.githubusercontent.com/Graham-lo/surge/master/"
+    "surge/rules/OpenAI.list,AI服务,no-resolve,extended-matching"
+)
 
 
 @dataclass(frozen=True)
@@ -185,6 +190,13 @@ def check_profiles() -> list[str]:
             errors.append(f"{relative}: missing {len(missing)} ordered ruleset reference(s)")
         elif positions != sorted(positions):
             errors.append(f"{relative}: ruleset precedence differs from the audited order")
+        if (
+            relative == "surge/profiles/Universal.conf"
+            and SURGE_OPENAI_EXTENDED_RULE not in text
+        ):
+            errors.append(
+                f"{relative}: OpenAI ruleset must enable no-resolve and extended-matching"
+            )
         if " = fallback," in text or "type: fallback" in text:
             errors.append(f"{relative}: public profile must use manual select groups only")
         if "ruleset.skk.moe" in text:
