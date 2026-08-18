@@ -150,18 +150,34 @@
     "Binance": {
       "clash_verge": "clash-verge/rules/Binance.yaml",
       "legacy_surge": "rules/Binance.list",
-      "rule_count": 69,
-      "sha256": "398c5e6ab139bc753e501e40b4db6825dc98c4fa559b2993d6222f004db8312e",
+      "rule_count": 43,
+      "sha256": "40e8381a6b2e99fd3587d68d8b9c2fed40d759e18625a9b2b286159adf137e50",
       "shadowrocket": "shadowrocket/rules/Binance.list",
       "surge": "surge/rules/Binance.list"
+    },
+    "BinanceDirect": {
+      "clash_verge": "clash-verge/rules/BinanceDirect.yaml",
+      "legacy_surge": "rules/BinanceDirect.list",
+      "rule_count": 35,
+      "sha256": "0a070b4b605828087f255cafc9a2ad0b9f40421e19663087230b3e70d4545468",
+      "shadowrocket": "shadowrocket/rules/BinanceDirect.list",
+      "surge": "surge/rules/BinanceDirect.list"
     },
     "Bybit": {
       "clash_verge": "clash-verge/rules/Bybit.yaml",
       "legacy_surge": "rules/Bybit.list",
-      "rule_count": 36,
-      "sha256": "8d81d2a4d04823fd470f279f94034aa7bfd6ba74c86e2d015d2771ca291faa47",
+      "rule_count": 33,
+      "sha256": "ad1cfc9f5370ef6887b1e20541f13b8f5a2f30c2c1283a117ea2fa8704502ede",
       "shadowrocket": "shadowrocket/rules/Bybit.list",
       "surge": "surge/rules/Bybit.list"
+    },
+    "BybitDirect": {
+      "clash_verge": "clash-verge/rules/BybitDirect.yaml",
+      "legacy_surge": "rules/BybitDirect.list",
+      "rule_count": 8,
+      "sha256": "ee4505ee68d7a10b1443dcdeed59d2af6870bdb9c8e25564f9759263dc0614b3",
+      "shadowrocket": "shadowrocket/rules/BybitDirect.list",
+      "surge": "surge/rules/BybitDirect.list"
     },
     "Claude": {
       "clash_verge": "clash-verge/rules/Claude.yaml",
@@ -174,10 +190,18 @@
     "OKX": {
       "clash_verge": "clash-verge/rules/OKX.yaml",
       "legacy_surge": "rules/OKX.list",
-      "rule_count": 19,
-      "sha256": "f8babacffbf23c26c0bb890990b3e2fd6e150c5701f6853a04530e1a580c2756",
+      "rule_count": 22,
+      "sha256": "6c03733c4070a1e13ae9ab9c22cb2f91d8c2cba9321d003553200c2e21282ed3",
       "shadowrocket": "shadowrocket/rules/OKX.list",
       "surge": "surge/rules/OKX.list"
+    },
+    "OKXDirect": {
+      "clash_verge": "clash-verge/rules/OKXDirect.yaml",
+      "legacy_surge": "rules/OKXDirect.list",
+      "rule_count": 11,
+      "sha256": "b6fc728622b72555420ba469cabef6bc247fa130accb44e980534e270a55d718",
+      "shadowrocket": "shadowrocket/rules/OKXDirect.list",
+      "surge": "surge/rules/OKXDirect.list"
     },
     "OpenAI": {
       "clash_verge": "clash-verge/rules/OpenAI.yaml",

@@ -70,8 +70,11 @@ proxy-groups:
     proxies: [日常代理, DIRECT]
 
 rule-providers:
+  BinanceDirect: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/BinanceDirect.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/BinanceDirect.yaml'}
   Binance: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/Binance.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/Binance.yaml'}
+  BybitDirect: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/BybitDirect.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/BybitDirect.yaml'}
   Bybit: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/Bybit.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/Bybit.yaml'}
+  OKXDirect: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OKXDirect.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OKXDirect.yaml'}
   OKX: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OKX.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OKX.yaml'}
   APNs: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/APNs.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/APNs.yaml'}
   OpenAI: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OpenAI.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OpenAI.yaml'}
@@ -95,8 +98,11 @@ rule-providers:
   CommonChinaIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/china_ip.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/china_ip.yaml'}
 
 rules:
+  - RULE-SET,BinanceDirect,DIRECT
   - RULE-SET,Binance,Binance
+  - RULE-SET,BybitDirect,DIRECT
   - RULE-SET,Bybit,Bybit
+  - RULE-SET,OKXDirect,DIRECT
   - RULE-SET,OKX,OKX
   - RULE-SET,CommonLanDomain,DIRECT
   - RULE-SET,OpenAI,AI服务

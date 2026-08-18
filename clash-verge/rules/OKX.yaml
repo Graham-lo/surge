@@ -11,6 +11,8 @@ payload:
   - 'DOMAIN-SUFFIX,couyi.pizza'
   - 'DOMAIN-SUFFIX,okx.com.cdn.cloudflare.net'
   - 'DOMAIN,d1w1p0smpsoh5j.cloudfront.net'
+  - 'DOMAIN,d2tbe9c16nz8ju.cloudfront.net'
+  - 'DOMAIN,d1a9ug9i3w9ke0.cloudfront.net'
   - 'DOMAIN,d1nil3qbkxfj92.cloudfront.net'
   - 'DOMAIN,d2p7qknqur0nu9.cloudfront.net'
   - 'DOMAIN,d3f0nrrzpmxcu1.cloudfront.net'
@@ -21,3 +23,4 @@ payload:
   - 'DOMAIN,cloudauth-device.cn-hongkong.aliyuncs.com'
   - 'DOMAIN,videocloud-i18n.byteplusvod.com'
   - 'DOMAIN,vod-license-m.bytepluscdn.com'
+  - 'IP-CIDR,8.210.73.205/32,no-resolve'

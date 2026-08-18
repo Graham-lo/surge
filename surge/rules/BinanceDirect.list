@@ -1,0 +1,51 @@
+# NAME: Binance Direct
+# FORMAT: Surge RULE-SET (policy omitted)
+# SOURCE: local gateway traffic observation, 2026-08-14 to 2026-08-18
+# MIRROR: Graham-lo/surge
+# UPDATED: 2026-08-18
+# NOTE: Binance endpoints that must bypass the proxy. The IP list is the domestic
+# acceleration range the app streams its order book from; measured on 2026-08-18
+# carrying live depth data over DIRECT. bscdnweb hosts sit on China Unicom
+# Guangdong and measured 172 ms proxied against 28 ms direct. Reference this set
+# with the DIRECT policy immediately before Binance.list.
+
+# Market data and API hosts.
+DOMAIN,ws-api.binance.com
+DOMAIN,stream.binance.com
+DOMAIN,fstream.binance.com
+DOMAIN,dstream.binance.com
+DOMAIN,nbstream.binance.com
+DOMAIN,edge-api.saasexch.com
+DOMAIN,aad90d5c0e88c4b4285bd912f64d970d-1403944741.ap-northeast-1.elb.amazonaws.com
+DOMAIN,bin-prod-new-websocket-alb-1463526464.ap-northeast-1.elb.amazonaws.com
+
+# Static asset CDN on China Unicom Guangdong.
+DOMAIN,static.bscdnweb.com
+DOMAIN,public.bscdnweb.com
+
+# Domestic acceleration addresses.
+IP-CIDR,39.108.55.122/32,no-resolve
+IP-CIDR,39.108.92.184/32,no-resolve
+IP-CIDR,39.108.179.41/32,no-resolve
+IP-CIDR,39.108.226.125/32,no-resolve
+IP-CIDR,39.108.239.197/32,no-resolve
+IP-CIDR,43.145.17.249/32,no-resolve
+IP-CIDR,43.174.242.71/32,no-resolve
+IP-CIDR,43.174.242.196/32,no-resolve
+IP-CIDR,47.106.103.72/32,no-resolve
+IP-CIDR,47.106.111.2/32,no-resolve
+IP-CIDR,47.106.116.105/32,no-resolve
+IP-CIDR,47.106.125.50/32,no-resolve
+IP-CIDR,47.106.169.74/32,no-resolve
+IP-CIDR,47.106.171.207/32,no-resolve
+IP-CIDR,47.107.32.31/32,no-resolve
+IP-CIDR,47.107.48.59/32,no-resolve
+IP-CIDR,47.107.92.165/32,no-resolve
+IP-CIDR,47.107.98.27/32,no-resolve
+IP-CIDR,47.107.127.135/32,no-resolve
+IP-CIDR,106.15.179.166/32,no-resolve
+IP-CIDR,106.53.165.44/32,no-resolve
+IP-CIDR,114.132.46.122/32,no-resolve
+IP-CIDR,119.23.63.226/32,no-resolve
+IP-CIDR,120.24.233.110/32,no-resolve
+IP-CIDR,120.77.173.49/32,no-resolve

@@ -30,11 +30,8 @@ DOMAIN,m3ond3.inapps.appsflyersdk.com
 DOMAIN,api.wsot2022.com
 DOMAIN,www.turingfraud.net
 DOMAIN,shortsgp.im.qcloud.com
-DOMAIN,spdtest-teo.bynbc.com
 IP-CIDR,150.109.18.233/32,no-resolve
 IP-CIDR,43.128.119.110/32,no-resolve
 IP-CIDR,43.134.118.170/32,no-resolve
-IP-CIDR,43.135.121.179/32,no-resolve
-IP-CIDR,43.154.61.67/32,no-resolve
 IP-CIDR,157.255.11.29/32,no-resolve
 IP-CIDR,157.255.11.53/32,no-resolve

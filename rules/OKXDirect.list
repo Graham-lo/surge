@@ -1,0 +1,26 @@
+# NAME: OKX Direct
+# FORMAT: Surge RULE-SET (policy omitted)
+# SOURCE: local gateway traffic observation, 2026-08-14 to 2026-08-18
+# MIRROR: Graham-lo/surge
+# UPDATED: 2026-08-18
+# NOTE: OKX endpoints that must bypass the proxy. The .cn and jingyunyilian hosts sit on
+# China Unicom and measured 140-147 ms proxied against 24-29 ms direct. The
+# gihiji aliases resolve into the same Hong Kong range as the IP entries below.
+# Reference this set with the DIRECT policy immediately before OKX.list.
+
+# Domestic hosts on China Unicom.
+DOMAIN,fjcwcapp.yqtjc.cn
+DOMAIN,mdcvsca.yqtjc.cn
+DOMAIN,mapp.nqjwzm.cn
+DOMAIN,static.jingyunyilian.com
+
+# Regional aliases.
+DOMAIN,www.gihiji.com.eo.dnse4.com
+DOMAIN,wspri.gihiji.com.eo.dnse4.com
+DOMAIN,wsdexpri.gihiji.com.eo.dnse4.com
+
+# Acceleration addresses behind those aliases.
+IP-CIDR,43.168.20.5/32,no-resolve
+IP-CIDR,43.168.20.6/32,no-resolve
+IP-CIDR,43.168.24.31/32,no-resolve
+IP-CIDR,43.168.24.35/32,no-resolve

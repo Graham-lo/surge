@@ -17,8 +17,11 @@ BASELINE = ROOT / "conflict-baseline.json"
 
 # Order is intentional and mirrors every public profile. Earlier rules win.
 RULESETS = (
+    ("BinanceDirect", "DIRECT"),
     ("Binance", "BIN"),
+    ("BybitDirect", "DIRECT"),
     ("Bybit", "BYB"),
+    ("OKXDirect", "DIRECT"),
     ("OKX", "OKX"),
     ("common/non_ip/lan", "DIRECT"),
     ("OpenAI", "AI"),
@@ -50,8 +53,11 @@ PROFILE_TOKENS = {
         f"/shadowrocket/rules/{name}.list," for name, _ in RULESETS
     ),
     "clash-verge/profiles/Universal.yaml": (
+        "RULE-SET,BinanceDirect,DIRECT",
         "RULE-SET,Binance,Binance",
+        "RULE-SET,BybitDirect,DIRECT",
         "RULE-SET,Bybit,Bybit",
+        "RULE-SET,OKXDirect,DIRECT",
         "RULE-SET,OKX,OKX",
         "RULE-SET,CommonLanDomain,DIRECT",
         "RULE-SET,OpenAI,AI服务",

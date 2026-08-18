@@ -1,0 +1,15 @@
+# NAME: OKXDirect
+# GENERATED: tools/build_rules.py from surge/rules/OKXDirect.list
+# FORMAT: Mihomo/Clash Verge classical rule-provider
+payload:
+  - 'DOMAIN,fjcwcapp.yqtjc.cn'
+  - 'DOMAIN,mdcvsca.yqtjc.cn'
+  - 'DOMAIN,mapp.nqjwzm.cn'
+  - 'DOMAIN,static.jingyunyilian.com'
+  - 'DOMAIN,www.gihiji.com.eo.dnse4.com'
+  - 'DOMAIN,wspri.gihiji.com.eo.dnse4.com'
+  - 'DOMAIN,wsdexpri.gihiji.com.eo.dnse4.com'
+  - 'IP-CIDR,43.168.20.5/32,no-resolve'
+  - 'IP-CIDR,43.168.20.6/32,no-resolve'
+  - 'IP-CIDR,43.168.24.31/32,no-resolve'
+  - 'IP-CIDR,43.168.24.35/32,no-resolve'

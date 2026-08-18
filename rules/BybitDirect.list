@@ -1,0 +1,24 @@
+# NAME: Bybit Direct
+# FORMAT: Surge RULE-SET (policy omitted)
+# SOURCE: local gateway traffic observation, 2026-08-14 to 2026-08-18
+# MIRROR: Graham-lo/surge
+# UPDATED: 2026-08-18
+# NOTE: Bybit endpoints that must bypass the proxy. ws2.bybit.biz resolves to Tencent
+# Cloud and measured 17-21 ms direct against 85-99 ms through any proxy, the
+# largest single saving in this profile. The spdtest hosts are the client's own
+# route probes and must see the direct network to choose correctly. Reference
+# this set with the DIRECT policy immediately before Bybit.list.
+
+# Market data.
+DOMAIN,ws2.bybit.biz
+
+# Client-side route probes.
+DOMAIN,spdtest-akm.byd3c3.com
+DOMAIN,spdtest-teo.bynbc.com
+DOMAIN,spdtest-ws.ng-dex.com
+DOMAIN,spdtest-cft.ng-dex.com
+
+# Domestic acceleration addresses.
+IP-CIDR,43.135.121.179/32,no-resolve
+IP-CIDR,43.154.61.67/32,no-resolve
+IP-CIDR,43.160.158.108/32,no-resolve

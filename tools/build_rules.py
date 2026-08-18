@@ -21,7 +21,18 @@ SHADOWROCKET_DIR = ROOT / "shadowrocket" / "rules"
 CLASH_VERGE_DIR = ROOT / "clash-verge" / "rules"
 MANIFEST = ROOT / "rules-manifest.json"
 
-RULE_NAMES = ("AI", "APNs", "Binance", "Bybit", "Claude", "OKX", "OpenAI")
+RULE_NAMES = (
+    "AI",
+    "APNs",
+    "Binance",
+    "BinanceDirect",
+    "Bybit",
+    "BybitDirect",
+    "Claude",
+    "OKX",
+    "OKXDirect",
+    "OpenAI",
+)
 ALLOWED_TYPES = {
     "AND",
     "DOMAIN",
