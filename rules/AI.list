@@ -3,7 +3,10 @@
 # SOURCE: https://github.com/v2fly/domain-list-community/blob/master/data/category-ai-!cn
 # MIRROR: Graham-lo/surge
 # UPDATED: 2026-07-29
-# NOTE: Other overseas AI services; Claude and OpenAI are intentionally excluded to avoid duplicate rules.
+# NOTE: Other overseas AI services, plus the shared vendor services that more
+# than one AI client depends on. Claude and OpenAI first-party domains are
+# intentionally excluded and live in their own sets, so each maintained set
+# owns exactly one concern and none of them depends on another.
 
 # Gemini / Google AI
 DOMAIN-SUFFIX,deepmind.com
@@ -177,3 +180,46 @@ DOMAIN-SUFFIX,sider.ai
 DOMAIN-SUFFIX,spicywriter.com
 DOMAIN-SUFFIX,tapnow.ai
 DOMAIN-SUFFIX,tripo3d.ai
+
+# Shared vendor services used by AI clients.
+# Observability intakes. The us5 endpoints are used by Claude Code and Claude
+# Desktop; browser-intake-datadoghq.com is the non-regional web intake. These
+# must not be process-scoped, or a browser session and its telemetry leave by
+# different exits.
+DOMAIN,api.datadoghq.com
+DOMAIN,api.us5.datadoghq.com
+DOMAIN,browser-intake-datadoghq.com
+DOMAIN,browser-intake-us5-datadoghq.com
+DOMAIN,http-intake.logs.us5.datadoghq.com
+DOMAIN-SUFFIX,sentry.io
+
+# Feature flags and experimentation.
+DOMAIN,cdn.growthbook.io
+DOMAIN-SUFFIX,api.statsig.com
+DOMAIN-SUFFIX,events.statsigapi.net
+DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,launchdarkly.com
+
+# Product analytics.
+DOMAIN,cdn.usefathom.com
+DOMAIN-SUFFIX,segment.io
+
+# Login, bot defence and risk. Observed from a browser during claude.ai
+# sign-in, so the challenge must share the exit used by the session itself.
+DOMAIN-SUFFIX,auth0.com
+DOMAIN-SUFFIX,client-api.arkoselabs.com
+DOMAIN-SUFFIX,hcaptcha.com
+
+# Subscription and support.
+DOMAIN-SUFFIX,intercom.io
+DOMAIN-SUFFIX,intercomcdn.com
+DOMAIN-SUFFIX,stripe.com
+DOMAIN-SUFFIX,stripe.network
+
+# Supporting infrastructure.
+DOMAIN,static.cloudflareinsights.com
+DOMAIN-SUFFIX,algolia.net
+DOMAIN-SUFFIX,host.livekit.cloud
+DOMAIN-SUFFIX,identrust.com
+DOMAIN-SUFFIX,observeit.net
+DOMAIN-SUFFIX,turn.livekit.cloud

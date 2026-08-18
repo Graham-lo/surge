@@ -1,7 +1,7 @@
 # NAME: Claude
 # GENERATED: tools/build_rules.py from surge/rules/Claude.list
 # FORMAT: Shadowrocket RULE-SET (policy omitted)
-# OMITTED: 6 desktop process-scoped rule(s)
+# OMITTED: 5 desktop process-scoped rule(s)
 
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,clau.de
@@ -11,5 +11,4 @@ DOMAIN-SUFFIX,claudemcpclient.com
 DOMAIN-SUFFIX,claudemcpcontent.com
 DOMAIN-SUFFIX,claudeusercontent.com
 DOMAIN,servd-anthropic-website.b-cdn.net
-DOMAIN,cdn.usefathom.com
 DOMAIN,o1158394.ingest.us.sentry.io

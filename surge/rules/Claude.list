@@ -3,9 +3,12 @@
 # SOURCE: https://github.com/v2fly/domain-list-community/blob/master/data/anthropic
 # SOURCE: local Claude Desktop traffic observation on 2026-07-28
 # SOURCE: local Claude iOS gateway traffic observation on 2026-08-12
+# SOURCE: local Surge http-api request capture on 2026-08-18 (811 requests)
+# SOURCE: string extraction from Claude Code 2.1.229 and Claude Desktop 1.32352.1
 # MIRROR: Graham-lo/surge
-# UPDATED: 2026-08-12
-# NOTE: First-party domains work on Surge Mac/iOS; shared SDK domains need client scoping.
+# UPDATED: 2026-08-18
+# NOTE: Claude-specific domains only. Vendor services that Claude shares with
+# other AI clients live in AI.list, so this set never depends on OpenAI.list.
 
 # Claude / Anthropic first-party
 DOMAIN-SUFFIX,anthropic.com
@@ -17,15 +20,14 @@ DOMAIN-SUFFIX,claudemcpcontent.com
 DOMAIN-SUFFIX,claudeusercontent.com
 DOMAIN,servd-anthropic-website.b-cdn.net
 
-# Supporting telemetry observed from Claude
-DOMAIN,cdn.usefathom.com
+# Claude-owned tenant endpoint on a shared vendor.
 DOMAIN,o1158394.ingest.us.sentry.io
 
-# Shared login, telemetry, risk, subscription and push services.
-# These rules are process-scoped on desktop. An iOS gateway cannot see the app
-# process, so use Private-Rules.dconf with SRC-IP plus the exact domains below.
+# Shared login, risk, subscription and push services that are too broad to
+# route for every client on the gateway. These stay process-scoped on desktop.
+# An iOS gateway cannot see the app process, so use Private-Rules.dconf with
+# SRC-IP plus these exact domains.
 AND,((PROCESS-NAME,Claude*),(DOMAIN,accounts.google.com))
-AND,((PROCESS-NAME,Claude*),(DOMAIN,browser-intake-us5-datadoghq.com))
 AND,((PROCESS-NAME,Claude*),(DOMAIN,api3.siftscience.com))
 AND,((PROCESS-NAME,Claude*),(DOMAIN,3.datadog.pool.ntp.org))
 AND,((PROCESS-NAME,Claude*),(DOMAIN,api.revenuecat.com))

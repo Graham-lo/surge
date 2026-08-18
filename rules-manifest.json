@@ -134,8 +134,8 @@
     "AI": {
       "clash_verge": "clash-verge/rules/AI.yaml",
       "legacy_surge": "rules/AI.list",
-      "rule_count": 137,
-      "sha256": "45806acd72b0d18ea7b12993929488760ed3ca5f2f954effc7acea0e04994fbc",
+      "rule_count": 163,
+      "sha256": "cd78e2ee15618363d9588145f111f25ea39ef3a2c53f6d727c7664c5af44bde2",
       "shadowrocket": "shadowrocket/rules/AI.list",
       "surge": "surge/rules/AI.list"
     },
@@ -166,8 +166,8 @@
     "Claude": {
       "clash_verge": "clash-verge/rules/Claude.yaml",
       "legacy_surge": "rules/Claude.list",
-      "rule_count": 16,
-      "sha256": "27eb05e7d27e021bba33f12875934abb9b2a406d33b89dc0a1af21e9cf929621",
+      "rule_count": 14,
+      "sha256": "7e10756b6153b8ffe7d8e700978b98d9a6fc18b99fb43e6f571ab0782196ad45",
       "shadowrocket": "shadowrocket/rules/Claude.list",
       "surge": "surge/rules/Claude.list"
     },
@@ -182,8 +182,8 @@
     "OpenAI": {
       "clash_verge": "clash-verge/rules/OpenAI.yaml",
       "legacy_surge": "rules/OpenAI.list",
-      "rule_count": 45,
-      "sha256": "e630f30ef759f943f4e519f55c419b3d9f9d760cf9d094eca38f12455819e96b",
+      "rule_count": 27,
+      "sha256": "874573bbc2e9c680cbb0422d066d8eda9906991a2eb367f25b35fe2180f631cd",
       "shadowrocket": "shadowrocket/rules/OpenAI.list",
       "surge": "surge/rules/OpenAI.list"
     }
