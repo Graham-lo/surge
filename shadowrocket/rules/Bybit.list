@@ -15,6 +15,7 @@ DOMAIN-SUFFIX,byabcde.com
 DOMAIN-SUFFIX,byapps.net
 DOMAIN-SUFFIX,byd3c3.com
 DOMAIN-SUFFIX,bybit.biz
+DOMAIN-SUFFIX,ng-dex.com
 DOMAIN-SUFFIX,bybdc6.com
 DOMAIN-SUFFIX,bybit-global.com
 DOMAIN-SUFFIX,bybit.cloud
@@ -30,8 +31,6 @@ DOMAIN,api.wsot2022.com
 DOMAIN,www.turingfraud.net
 DOMAIN,shortsgp.im.qcloud.com
 DOMAIN,spdtest-teo.bynbc.com
-DOMAIN,spdtest-ws.ng-dex.com
-DOMAIN,spdtest-cft.ng-dex.com
 IP-CIDR,150.109.18.233/32,no-resolve
 IP-CIDR,43.128.119.110/32,no-resolve
 IP-CIDR,43.134.118.170/32,no-resolve

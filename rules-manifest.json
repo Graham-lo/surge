@@ -158,8 +158,8 @@
     "Bybit": {
       "clash_verge": "clash-verge/rules/Bybit.yaml",
       "legacy_surge": "rules/Bybit.list",
-      "rule_count": 37,
-      "sha256": "5f2326cbddb93f0258daa5424be4df1380aad072c5dfef38959f545559ea9975",
+      "rule_count": 36,
+      "sha256": "8d81d2a4d04823fd470f279f94034aa7bfd6ba74c86e2d015d2771ca291faa47",
       "shadowrocket": "shadowrocket/rules/Bybit.list",
       "surge": "surge/rules/Bybit.list"
     },
@@ -174,8 +174,8 @@
     "OKX": {
       "clash_verge": "clash-verge/rules/OKX.yaml",
       "legacy_surge": "rules/OKX.list",
-      "rule_count": 18,
-      "sha256": "09b846bdaca0f6c4a7567d041ad414bcd999542a5432d3a4df37ec1425230c5b",
+      "rule_count": 19,
+      "sha256": "f8babacffbf23c26c0bb890990b3e2fd6e150c5701f6853a04530e1a580c2756",
       "shadowrocket": "shadowrocket/rules/OKX.list",
       "surge": "surge/rules/OKX.list"
     },
