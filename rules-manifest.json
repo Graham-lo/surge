@@ -91,8 +91,8 @@
     "non_ip/domestic": {
       "clash_verge": "clash-verge/rules/common/non_ip/domestic.yaml",
       "license": "AGPL-3.0-only",
-      "rule_count": 882,
-      "sha256": "0eb4efd7b736eefc3a1655431448c15f4eb416e61ecf208f4851ed35069442fc",
+      "rule_count": 892,
+      "sha256": "a1751fda0f4dfa2773bcd70d0bf53d4901dcf7696535a2684f2a2822c0dc7641",
       "shadowrocket": "shadowrocket/rules/common/non_ip/domestic.list",
       "surge": "surge/rules/common/non_ip/domestic.list"
     },
