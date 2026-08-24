@@ -869,3 +869,8 @@ payload:
   - 'DOMAIN-SUFFIX,kingsoft-office-service.com'
   - 'DOMAIN-SUFFIX,dl.delivery.mp.microsoft.com'
   - 'DOMAIN-WILDCARD,*.qhimgs?.com'
+  - 'DOMAIN-SUFFIX,thsi.cn'
+  - 'DOMAIN-SUFFIX,hexin.cn'
+  - 'DOMAIN-SUFFIX,123ths.com'
+  - 'DOMAIN-SUFFIX,touzime.com'
+  - 'DOMAIN-SUFFIX,hxkba.com'
