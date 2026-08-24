@@ -1,0 +1,21 @@
+# NAME: AppleStore
+# FORMAT: Surge RULE-SET (policy omitted)
+# SOURCE: Apple network endpoints for enterprise networks
+# SOURCE: verified Surge gateway traffic on 2026-08-24
+# MIRROR: Graham-lo/surge
+# UPDATED: 2026-08-24
+#
+# Scope: App Store content, purchase, receipt and Apple Account authentication.
+# Keep APNs, Apple Intelligence and Apple media rules before this set. Do not
+# broaden this file to all of apple.com, icloud.com, cdn-apple.com or
+# 17.0.0.0/8 without a new traffic audit. CloudKit infrastructure belongs in a
+# separate direct ruleset if it is moved into Git later.
+
+DOMAIN-SUFFIX,itunes.apple.com
+DOMAIN-SUFFIX,apps.apple.com
+DOMAIN-SUFFIX,mzstatic.com
+DOMAIN,ppq.apple.com
+DOMAIN,account.apple.com
+DOMAIN,appleid.cdn-apple.com
+DOMAIN,idmsa.apple.com
+DOMAIN,gsa.apple.com

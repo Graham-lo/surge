@@ -68,6 +68,9 @@ proxy-groups:
   - name: APNs-Proxy
     type: select
     proxies: [日常代理, DIRECT]
+  - name: Apple商店
+    type: select
+    proxies: [DIRECT, 日常代理]
 
 rule-providers:
   BinanceDirect: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/BinanceDirect.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/BinanceDirect.yaml'}
@@ -77,6 +80,7 @@ rule-providers:
   OKXDirect: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OKXDirect.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OKXDirect.yaml'}
   OKX: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OKX.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OKX.yaml'}
   APNs: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/APNs.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/APNs.yaml'}
+  AppleStore: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/AppleStore.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/AppleStore.yaml'}
   OpenAI: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OpenAI.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OpenAI.yaml'}
   Claude: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/Claude.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/Claude.yaml'}
   AI: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/AI.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/AI.yaml'}
@@ -118,6 +122,7 @@ rules:
   - RULE-SET,CommonAppleIntelligence,AI服务
   - RULE-SET,CommonTelegram,日常代理
   - RULE-SET,CommonStream,日常代理
+  - RULE-SET,AppleStore,Apple商店
   - RULE-SET,CommonAppleCN,DIRECT
   - RULE-SET,CommonDomestic,DIRECT
   - RULE-SET,CommonDirect,DIRECT

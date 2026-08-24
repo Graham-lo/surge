@@ -12,10 +12,11 @@ certificates are intentionally excluded.
 | Shadowrocket | [`shadowrocket/rules`](shadowrocket/rules) | [`shadowrocket/profiles/Universal.conf`](shadowrocket/profiles/Universal.conf) |
 | Clash Verge Rev / Mihomo | [`clash-verge/rules`](clash-verge/rules) | [`clash-verge/profiles/Universal.yaml`](clash-verge/profiles/Universal.yaml) |
 
-The maintained service sets are AI, OpenAI, Claude, APNs, Binance, Bybit and
-OKX. Sixteen common sets for LAN, AI, Apple Intelligence, Telegram, streaming,
-domestic/global routing and IP routing are also stored in this repository as
-editable static files. Clients do not fetch rules from another rules project.
+The maintained service sets are AI, OpenAI, Claude, APNs, Apple Store,
+Binance, Bybit and OKX. Sixteen common sets for LAN, AI, Apple Intelligence,
+Telegram, streaming, domestic/global routing and IP routing are also stored in
+this repository as editable static files. Clients do not fetch rules from
+another rules project.
 
 Rules for Surge are canonical; the Shadowrocket and Clash Verge variants are
 generated automatically. Public profiles use manual `select` groups only. The

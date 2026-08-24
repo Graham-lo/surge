@@ -1,0 +1,12 @@
+# NAME: AppleStore
+# GENERATED: tools/build_rules.py from surge/rules/AppleStore.list
+# FORMAT: Shadowrocket RULE-SET (policy omitted)
+
+DOMAIN-SUFFIX,itunes.apple.com
+DOMAIN-SUFFIX,apps.apple.com
+DOMAIN-SUFFIX,mzstatic.com
+DOMAIN,ppq.apple.com
+DOMAIN,account.apple.com
+DOMAIN,appleid.cdn-apple.com
+DOMAIN,idmsa.apple.com
+DOMAIN,gsa.apple.com

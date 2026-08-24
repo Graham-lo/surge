@@ -23,6 +23,15 @@ The public template uses manual `select` groups only because it targets normal
 phone and computer clients. It contains no automatic fallback, proxy server,
 subscription URL, credential, API key, local certificate, or MITM password.
 
+## Apple Store routing
+
+`AppleStore.list` keeps App Store content, purchase, receipt and Apple Account
+authentication on one manually selected egress. Its reference must stay after
+the streaming rules, so Apple Music and TV exceptions win first, and before
+`apple_cn`, domestic IP, SYSTEM and FINAL rules. The public group defaults to
+DIRECT; private gateway profiles may add one fixed, audited backup node but
+must not use a Smart group as the backup.
+
 ## Claude on an iOS gateway
 
 Surge Mac cannot see the originating app process for traffic taken over from an

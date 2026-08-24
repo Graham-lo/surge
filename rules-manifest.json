@@ -147,6 +147,14 @@
       "shadowrocket": "shadowrocket/rules/APNs.list",
       "surge": "surge/rules/APNs.list"
     },
+    "AppleStore": {
+      "clash_verge": "clash-verge/rules/AppleStore.yaml",
+      "legacy_surge": "rules/AppleStore.list",
+      "rule_count": 8,
+      "sha256": "b4a6ae7cc57224c7d502dbd7ef990b9e17ce8993e9ca9f37b73bd005b2a221a1",
+      "shadowrocket": "shadowrocket/rules/AppleStore.list",
+      "surge": "surge/rules/AppleStore.list"
+    },
     "Binance": {
       "clash_verge": "clash-verge/rules/Binance.yaml",
       "legacy_surge": "rules/Binance.list",

@@ -24,6 +24,7 @@ MANIFEST = ROOT / "rules-manifest.json"
 RULE_NAMES = (
     "AI",
     "APNs",
+    "AppleStore",
     "Binance",
     "BinanceDirect",
     "Bybit",
