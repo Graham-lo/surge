@@ -8,9 +8,9 @@ certificates are intentionally excluded.
 
 | Client | Rules | Generic profile |
 | --- | --- | --- |
-| Surge Mac / iOS | [`surge/rules`](surge/rules) | [`surge/profiles/Universal.conf`](surge/profiles/Universal.conf) |
+| Surge Mac / iOS | [`surge/rules`](surge/rules) | [`Universal.conf`](surge/profiles/Universal.conf), [`iOS.conf`](surge/profiles/iOS.conf) |
 | Shadowrocket | [`shadowrocket/rules`](shadowrocket/rules) | [`shadowrocket/profiles/Universal.conf`](shadowrocket/profiles/Universal.conf) |
-| Clash Verge Rev / Mihomo | [`clash-verge/rules`](clash-verge/rules) | [`clash-verge/profiles/Universal.yaml`](clash-verge/profiles/Universal.yaml) |
+| Clash Verge Rev / Mihomo | [`clash-verge/rules`](clash-verge/rules) | [`Universal.yaml`](clash-verge/profiles/Universal.yaml), [`Full.yaml`](clash-verge/profiles/Full.yaml) |
 
 The maintained service sets are AI, OpenAI, Claude, APNs, Apple Store,
 Binance, Bybit and OKX. Sixteen common sets for LAN, AI, Apple Intelligence,
@@ -19,9 +19,10 @@ this repository as editable static files. Clients do not fetch rules from
 another rules project.
 
 Rules for Surge are canonical; the Shadowrocket and Clash Verge variants are
-generated automatically. Public profiles use manual `select` groups only. The
-automatic fallback groups used by the Mac mini gateway remain in its private
-local profile and are intentionally not published here.
+generated automatically. The cross-platform `Universal` profiles use manual
+`select` groups only. The standalone Surge iOS and Mihomo `Full` templates also
+provide node-free automatic groups driven by service tags, with score-prefixed
+fallback/manual ordering; no private provider, node or credential is published.
 
 ## Maintenance
 
@@ -47,7 +48,8 @@ same behavior across clients:
 - `[AI]`: clean residential AI candidates.
 - `[REG]`: normal daily candidates.
 - `[BIN]`, `[BYB]`, `[OKX]`: exchange candidates.
-- `[TV]`: TradingView candidates.
+- `[TV]`, `[APNS]`, `[APPLE]`, `[GIT]`: service-specific candidates.
+- `[PREFERRED]`: optional priority boost in the Surge iOS Smart group.
 - `[001]`, `[002]`, etc.: score order, best first in the manual picker.
 
 ## Common rules and independence

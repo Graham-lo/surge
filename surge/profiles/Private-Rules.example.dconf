@@ -1,4 +1,5 @@
-# Copy to Private-Rules.dconf beside Universal.conf and replace the source IP.
+# Copy these lines to the top of [Rule] in a private Universal.conf copy and
+# replace the source IP.
 # Reserve the address in DHCP first. These shared SDK domains must stay scoped
 # to the iPhone that runs Claude so unrelated clients are not routed as AI.
 

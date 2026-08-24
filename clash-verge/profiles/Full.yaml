@@ -1,0 +1,266 @@
+# Node-free full-routing Mihomo profile for Clash Verge Rev.
+# Add private proxy-providers locally; never commit subscription URLs.
+# Score-prefixed service tags let automatic groups reproduce the maintained
+# routing topology without publishing a server, port, credential or provider.
+
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '+.lan'
+    - '+.local'
+    - '+.home.arpa'
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: false
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+
+tun:
+  enable: false
+  stack: mixed
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 'any:53'
+    - 'tcp://any:53'
+
+# This is a built-in direct alias, not a proxy node. Its [999] score keeps it
+# behind private [APNS] candidates when include-all sorts policies by name.
+proxies:
+  - name: '[999][APNS] DIRECT'
+    type: direct
+    udp: true
+
+proxy-providers: {}
+
+proxy-groups:
+  - name: Binance自动容灾
+    type: fallback
+    include-all: true
+    filter: '(?i)\[BIN\]'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    lazy: true
+    timeout: 8000
+    empty-fallback: DIRECT
+  - name: Binance
+    type: select
+    include-all: true
+    filter: '(?i)\[BIN\]'
+    proxies: [Binance自动容灾, DIRECT]
+  - name: Bybit自动容灾
+    type: fallback
+    include-all: true
+    filter: '(?i)\[BYB\]'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    lazy: true
+    timeout: 8000
+    empty-fallback: DIRECT
+  - name: Bybit
+    type: select
+    include-all: true
+    filter: '(?i)\[BYB\]'
+    proxies: [Bybit自动容灾, DIRECT]
+  - name: OKX自动容灾
+    type: fallback
+    include-all: true
+    filter: '(?i)\[OKX\]'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    lazy: true
+    timeout: 8000
+    empty-fallback: DIRECT
+  - name: OKX
+    type: select
+    include-all: true
+    filter: '(?i)\[OKX\]'
+    proxies: [OKX自动容灾, DIRECT]
+  - name: APNs-Proxy
+    type: fallback
+    include-all: true
+    filter: '(?i)\[APNS\]'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    lazy: true
+    timeout: 5000
+    empty-fallback: DIRECT
+  - name: Apple商店
+    type: select
+    include-all: true
+    filter: '(?i)\[APPLE\]'
+    proxies: [DIRECT]
+  - name: AI自动容灾
+    type: fallback
+    include-all: true
+    filter: '(?i)\[AI\]'
+    url: https://www.gstatic.com/generate_204
+    interval: 600
+    lazy: true
+    timeout: 8000
+    empty-fallback: REJECT
+  - name: AI服务
+    type: select
+    include-all: true
+    filter: '(?i)\[AI\]'
+    proxies: [AI自动容灾]
+  - name: TradingView
+    type: fallback
+    include-all: true
+    filter: '(?i)\[TV\]'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    lazy: true
+    timeout: 8000
+    empty-fallback: REJECT
+  - name: 日常代理
+    type: url-test
+    include-all: true
+    filter: '(?i)\[REG\]'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    lazy: true
+    timeout: 8000
+    tolerance: 100
+    empty-fallback: REJECT
+  - name: Git自动容灾
+    type: fallback
+    include-all: true
+    filter: '(?i)\[GIT\]'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    lazy: true
+    timeout: 5000
+    empty-fallback: DIRECT
+  - name: Git服务
+    type: select
+    include-all: true
+    filter: '(?i)\[GIT\]'
+    proxies: [Git自动容灾, DIRECT]
+
+rule-providers:
+  BinanceDirect: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/BinanceDirect.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/BinanceDirect.yaml'}
+  Binance: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/Binance.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/Binance.yaml'}
+  BybitDirect: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/BybitDirect.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/BybitDirect.yaml'}
+  Bybit: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/Bybit.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/Bybit.yaml'}
+  OKXDirect: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OKXDirect.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OKXDirect.yaml'}
+  OKX: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OKX.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OKX.yaml'}
+  APNs: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/APNs.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/APNs.yaml'}
+  AppleStore: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/AppleStore.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/AppleStore.yaml'}
+  OpenAI: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/OpenAI.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/OpenAI.yaml'}
+  Claude: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/Claude.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/Claude.yaml'}
+  AI: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/AI.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/AI.yaml'}
+  CommonLanDomain: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/lan.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/lan.yaml'}
+  CommonLanIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/lan.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/lan.yaml'}
+  CommonAI: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/ai.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/ai.yaml'}
+  CommonAppleIntelligence: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/apple_intelligence.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/apple_intelligence.yaml'}
+  CommonTelegram: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/telegram.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/telegram.yaml'}
+  CommonStream: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/stream.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/stream.yaml'}
+  CommonAppleCN: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/apple_cn.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/apple_cn.yaml'}
+  CommonDomestic: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/domestic.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/domestic.yaml'}
+  CommonDirect: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/direct.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/direct.yaml'}
+  CommonGlobal: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/non_ip/global.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/non_ip/global.yaml'}
+  CommonAIIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/ai.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/ai.yaml'}
+  CommonTelegramIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/telegram.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/telegram.yaml'}
+  CommonTelegramASN: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/telegram_asn.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/telegram_asn.yaml'}
+  CommonStreamIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/stream.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/stream.yaml'}
+  CommonDomesticIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/domestic.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/domestic.yaml'}
+  CommonChinaIP: {type: http, behavior: classical, format: yaml, interval: 86400, path: ./rules/common/ip/china_ip.yaml, url: 'https://raw.githubusercontent.com/Graham-lo/surge/master/clash-verge/rules/common/ip/china_ip.yaml'}
+
+rules:
+  - DOMAIN-SUFFIX,doubleclick.net,REJECT
+  - DOMAIN-SUFFIX,ss2.us,DIRECT
+  - DOMAIN,ocsp.usertrust.com,DIRECT
+  - DOMAIN,crl.usertrust.com,DIRECT
+  - DOMAIN,ocsp.sectigo.com,DIRECT
+  - DOMAIN,crl.sectigo.com,DIRECT
+  - DOMAIN,ocsp.digicert.com,DIRECT
+  - DOMAIN,ocsp.digicert.cn,DIRECT
+  - DOMAIN,crl3.digicert.com,DIRECT
+  - DOMAIN,crl4.digicert.com,DIRECT
+  - DOMAIN,ocsp.apple.com,DIRECT
+  - DOMAIN,ocsp2.apple.com,DIRECT
+  - DOMAIN,ocsp.pki.goog,DIRECT
+  - DOMAIN,ocsp.entrust.net,DIRECT
+  - DOMAIN-SUFFIX,time.apple.com,DIRECT
+  - RULE-SET,BinanceDirect,DIRECT,no-resolve
+  - RULE-SET,Binance,Binance,no-resolve
+  - RULE-SET,BybitDirect,DIRECT,no-resolve
+  - RULE-SET,Bybit,Bybit,no-resolve
+  - RULE-SET,OKXDirect,DIRECT,no-resolve
+  - RULE-SET,OKX,OKX,no-resolve
+  - RULE-SET,CommonLanDomain,DIRECT
+  - RULE-SET,OpenAI,AI服务
+  - RULE-SET,CommonLanIP,DIRECT,no-resolve
+  - DOMAIN,dns.alidns.com,DIRECT
+  - DOMAIN,doh.pub,DIRECT
+  - IP-CIDR,223.5.5.5/32,DIRECT,no-resolve
+  - IP-CIDR,119.29.29.29/32,DIRECT,no-resolve
+  - RULE-SET,APNs,APNs-Proxy,no-resolve
+  - DOMAIN-SUFFIX,tradingview.com,TradingView
+  - DOMAIN-SUFFIX,tradingview-widget.com,TradingView
+  - RULE-SET,Claude,AI服务
+  - RULE-SET,AI,AI服务
+  - RULE-SET,CommonAI,AI服务
+  - RULE-SET,CommonAppleIntelligence,AI服务
+  - RULE-SET,CommonTelegram,日常代理
+  - RULE-SET,CommonStream,日常代理
+  - DOMAIN,gateway.icloud.com,DIRECT
+  - RULE-SET,AppleStore,Apple商店
+  - RULE-SET,CommonAppleCN,DIRECT
+  - DOMAIN-SUFFIX,jin10.com,DIRECT
+  - RULE-SET,CommonDomestic,DIRECT
+  - RULE-SET,CommonDirect,DIRECT
+  - DOMAIN-SUFFIX,gitee.com,DIRECT
+  - DOMAIN-SUFFIX,gitee.io,DIRECT
+  - DOMAIN-KEYWORD,github,Git服务
+  - DOMAIN-SUFFIX,gitlab.com,Git服务
+  - DOMAIN-SUFFIX,gitlab-static.net,Git服务
+  - DOMAIN-SUFFIX,bitbucket.org,Git服务
+  - DOMAIN-SUFFIX,bitbucket.io,Git服务
+  - DOMAIN-SUFFIX,codeberg.org,Git服务
+  - DOMAIN-SUFFIX,sr.ht,Git服务
+  - DOMAIN-SUFFIX,sourcehut.org,Git服务
+  - DOMAIN-SUFFIX,git-lfs.com,Git服务
+  - DOMAIN-SUFFIX,git-scm.com,Git服务
+  - RULE-SET,CommonGlobal,日常代理
+  - RULE-SET,CommonAIIP,AI服务,no-resolve
+  - RULE-SET,CommonTelegramIP,日常代理,no-resolve
+  - RULE-SET,CommonTelegramASN,日常代理,no-resolve
+  - RULE-SET,CommonStreamIP,日常代理,no-resolve
+  - RULE-SET,CommonDomesticIP,DIRECT,no-resolve
+  - RULE-SET,CommonChinaIP,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT
+  - MATCH,日常代理

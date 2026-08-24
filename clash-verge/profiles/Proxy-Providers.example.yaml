@@ -1,5 +1,6 @@
-# Copy provider entries into Universal.yaml locally.
-# Keep the real URLs out of Git. Prefix or rename policies with service tags.
+# Copy provider entries into Universal.yaml or Full.yaml locally.
+# Keep the real URLs out of Git. Put the score first, followed by service tags.
+# Supported tags: [AI] [REG] [BIN] [BYB] [OKX] [TV] [APNS] [APPLE] [GIT].
 proxy-providers:
   residential-example:
     type: http
@@ -7,21 +8,25 @@ proxy-providers:
     path: ./proxy_providers/residential.yaml
     interval: 3600
     override:
-      additional-prefix: '[AI][001] '
+      additional-prefix: '[001][AI] '
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 300
       timeout: 8000
+      lazy: true
+      expected-status: 204
   regular-example:
     type: http
     url: REPLACE_WITH_PRIVATE_SUBSCRIPTION_URL
     path: ./proxy_providers/regular.yaml
     interval: 3600
     override:
-      additional-prefix: '[REG][BIN][BYB][OKX][TV][001] '
+      additional-prefix: '[001][REG][BIN][BYB][OKX][TV][APNS][APPLE][GIT] '
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 300
       timeout: 8000
+      lazy: true
+      expected-status: 204

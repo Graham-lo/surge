@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import ipaddress
 import json
+import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -50,6 +51,9 @@ PROFILE_TOKENS = {
     "surge/profiles/Universal.conf": tuple(
         f"/surge/rules/{name}.list," for name, _ in RULESETS
     ),
+    "surge/profiles/iOS.conf": tuple(
+        f"/surge/rules/{name}.list," for name, _ in RULESETS
+    ),
     "shadowrocket/profiles/Universal.conf": tuple(
         f"/shadowrocket/rules/{name}.list," for name, _ in RULESETS
     ),
@@ -82,6 +86,41 @@ PROFILE_TOKENS = {
         "RULE-SET,CommonDomesticIP,DIRECT",
         "RULE-SET,CommonChinaIP,DIRECT",
     ),
+    "clash-verge/profiles/Full.yaml": (
+        "RULE-SET,BinanceDirect,DIRECT",
+        "RULE-SET,Binance,Binance",
+        "RULE-SET,BybitDirect,DIRECT",
+        "RULE-SET,Bybit,Bybit",
+        "RULE-SET,OKXDirect,DIRECT",
+        "RULE-SET,OKX,OKX",
+        "RULE-SET,CommonLanDomain,DIRECT",
+        "RULE-SET,OpenAI,AI服务",
+        "RULE-SET,CommonLanIP,DIRECT",
+        "RULE-SET,APNs,APNs-Proxy",
+        "RULE-SET,Claude,AI服务",
+        "RULE-SET,AI,AI服务",
+        "RULE-SET,CommonAI,AI服务",
+        "RULE-SET,CommonAppleIntelligence,AI服务",
+        "RULE-SET,CommonTelegram,日常代理",
+        "RULE-SET,CommonStream,日常代理",
+        "RULE-SET,AppleStore,Apple商店",
+        "RULE-SET,CommonAppleCN,DIRECT",
+        "RULE-SET,CommonDomestic,DIRECT",
+        "RULE-SET,CommonDirect,DIRECT",
+        "RULE-SET,CommonGlobal,日常代理",
+        "RULE-SET,CommonAIIP,AI服务",
+        "RULE-SET,CommonTelegramIP,日常代理",
+        "RULE-SET,CommonTelegramASN,日常代理",
+        "RULE-SET,CommonStreamIP,日常代理",
+        "RULE-SET,CommonDomesticIP,DIRECT",
+        "RULE-SET,CommonChinaIP,DIRECT",
+    ),
+}
+
+MANUAL_ONLY_PROFILES = {
+    "surge/profiles/Universal.conf",
+    "shadowrocket/profiles/Universal.conf",
+    "clash-verge/profiles/Universal.yaml",
 }
 
 SURGE_OPENAI_EXTENDED_RULE = (
@@ -188,6 +227,41 @@ def overlap_summary(rules: list[Rule]) -> dict[str, object]:
     return result
 
 
+def surge_group_types(text: str) -> list[str]:
+    """Return every active group type from a Surge-style [Proxy Group] section."""
+    in_groups = False
+    result: list[str] = []
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if line.startswith("[") and line.endswith("]"):
+            in_groups = line == "[Proxy Group]"
+            continue
+        if not in_groups or not line or line.startswith(("#", ";", "//")):
+            continue
+        if "=" in line:
+            right = line.split("=", 1)[1]
+            result.append(right.split(",", 1)[0].strip().lower())
+    return result
+
+
+def mihomo_group_types(text: str) -> list[str]:
+    """Return every group type from the top-level Mihomo proxy-groups list."""
+    in_groups = False
+    result: list[str] = []
+    for raw_line in text.splitlines():
+        if raw_line == "proxy-groups:":
+            in_groups = True
+            continue
+        if in_groups and raw_line and not raw_line[0].isspace():
+            break
+        if not in_groups:
+            continue
+        match = re.match(r"^\s+type:\s*([^\s#]+)", raw_line)
+        if match:
+            result.append(match.group(1).lower())
+    return result
+
+
 def check_profiles() -> list[str]:
     errors: list[str] = []
     for relative, tokens in PROFILE_TOKENS.items():
@@ -198,17 +272,65 @@ def check_profiles() -> list[str]:
             errors.append(f"{relative}: missing {len(missing)} ordered ruleset reference(s)")
         elif positions != sorted(positions):
             errors.append(f"{relative}: ruleset precedence differs from the audited order")
-        if (
-            relative == "surge/profiles/Universal.conf"
-            and SURGE_OPENAI_EXTENDED_RULE not in text
-        ):
+        if relative.startswith("surge/profiles/") and SURGE_OPENAI_EXTENDED_RULE not in text:
             errors.append(
                 f"{relative}: OpenAI ruleset must enable no-resolve and extended-matching"
             )
-        if " = fallback," in text or "type: fallback" in text:
-            errors.append(f"{relative}: public profile must use manual select groups only")
+        if relative in MANUAL_ONLY_PROFILES:
+            group_types = (
+                mihomo_group_types(text)
+                if relative.endswith((".yaml", ".yml"))
+                else surge_group_types(text)
+            )
+            invalid_types = sorted(set(group_types) - {"select"})
+            if not group_types:
+                errors.append(f"{relative}: no proxy groups found")
+            elif invalid_types:
+                errors.append(
+                    f"{relative}: manual profile has non-select group types "
+                    f"{', '.join(invalid_types)}"
+                )
         if "ruleset.skk.moe" in text:
             errors.append(f"{relative}: public profile still depends on an external ruleset host")
+
+    ios_text = (ROOT / "surge/profiles/iOS.conf").read_text(encoding="utf-8")
+    for token in (
+        "wifi-assist = true",
+        "auto-suspend = false",
+        "include-all-networks = true",
+        "include-apns = true",
+        "allow-wifi-access = false",
+        "allow-hotspot-access = false",
+        "udp-policy-not-supported-behaviour = REJECT",
+        "日常代理 = smart,",
+        "FAIL-CLOSED:1000",
+        'AI服务 = select, AI自动容灾, include-all-proxies=true, policy-regex-filter="(?i)\\[AI\\]"',
+        'Git服务 = select, Git自动容灾, DIRECT, include-all-proxies=true, policy-regex-filter="(?i)\\[GIT\\]"',
+        "RULE-SET,https://raw.githubusercontent.com/Graham-lo/surge/master/surge/rules/APNs.list,APNs-Proxy,no-resolve,extended-matching",
+    ):
+        if token not in ios_text:
+            errors.append(f"surge/profiles/iOS.conf: missing required iOS token {token!r}")
+    ios_apple_group = next(
+        (line for line in ios_text.splitlines() if line.startswith("Apple商店 = ")), ""
+    )
+    if "日常代理" in ios_apple_group:
+        errors.append("surge/profiles/iOS.conf: Apple Store must not use the Smart group")
+
+    full_text = (ROOT / "clash-verge/profiles/Full.yaml").read_text(encoding="utf-8")
+    for token in (
+        "allow-lan: false",
+        "empty-fallback: REJECT",
+        "type: url-test",
+        "name: Git服务",
+        "MATCH,日常代理",
+    ):
+        if token not in full_text:
+            errors.append(f"clash-verge/profiles/Full.yaml: missing required token {token!r}")
+    if "    - '*'" in full_text:
+        errors.append("clash-verge/profiles/Full.yaml: fake-IP must not be disabled globally")
+    apple_block = full_text.split("  - name: Apple商店", 1)[-1].split("  - name:", 1)[0]
+    if "日常代理" in apple_block:
+        errors.append("clash-verge/profiles/Full.yaml: Apple Store must not use the daily group")
     return errors
 
 
