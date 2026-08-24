@@ -11,8 +11,8 @@
     "ip/china_ip": {
       "clash_verge": "clash-verge/rules/common/ip/china_ip.yaml",
       "license": "CC-BY-SA-2.0",
-      "rule_count": 3912,
-      "sha256": "73d639d952c1e77e699da69deebfb16683ad0cda15de771e19ee004616815740",
+      "rule_count": 3920,
+      "sha256": "6b3bd6e3418623df9aa84d64924fceb64abbe48eddeccf4155bcdac1e0d560a2",
       "shadowrocket": "shadowrocket/rules/common/ip/china_ip.list",
       "surge": "surge/rules/common/ip/china_ip.list"
     },
@@ -43,8 +43,8 @@
     "ip/telegram": {
       "clash_verge": "clash-verge/rules/common/ip/telegram.yaml",
       "license": "AGPL-3.0-only",
-      "rule_count": 16,
-      "sha256": "62025cb8bdd07176a628886d32f487458bb270228062a460aee4f70c20a75d55",
+      "rule_count": 15,
+      "sha256": "27f6bab896e98ec9631fd187ff5147fb101260fc7a322c0dc994bbd27ed0a81f",
       "shadowrocket": "shadowrocket/rules/common/ip/telegram.list",
       "surge": "surge/rules/common/ip/telegram.list"
     },
@@ -83,16 +83,16 @@
     "non_ip/direct": {
       "clash_verge": "clash-verge/rules/common/non_ip/direct.yaml",
       "license": "AGPL-3.0-only",
-      "rule_count": 218,
-      "sha256": "36d007df784ca629f228a60db8b66a9b4f65154de4704213bf70a1e05fd12291",
+      "rule_count": 219,
+      "sha256": "1ab4dbeca342bfa80c8eb18da5ea387543bf612a6c0a3f263cb78d46f2bbe0f2",
       "shadowrocket": "shadowrocket/rules/common/non_ip/direct.list",
       "surge": "surge/rules/common/non_ip/direct.list"
     },
     "non_ip/domestic": {
       "clash_verge": "clash-verge/rules/common/non_ip/domestic.yaml",
       "license": "AGPL-3.0-only",
-      "rule_count": 874,
-      "sha256": "63acdb7d04c38fb58edab393ea3349f5e84e17885e9edb225f711e64c7cd95db",
+      "rule_count": 883,
+      "sha256": "784d7d6a03ef24aa62351087eb51a08f87252369418a93831da239d4ae6ff546",
       "shadowrocket": "shadowrocket/rules/common/non_ip/domestic.list",
       "surge": "surge/rules/common/non_ip/domestic.list"
     },

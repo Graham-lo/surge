@@ -879,10 +879,21 @@ DOMAIN-WILDCARD,*.qhimgs?.com
 USER-AGENT,%E4%BC%98%E9%85%B7*
 USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D*
 USER-AGENT,TeslaMap
-# Graham-maintained additions: Tonghuashun app services observed on the home gateway.
+# Graham-maintained additions: domestic app services observed on the home gateway.
+# Tonghuashun
 DOMAIN-SUFFIX,thsi.cn
 DOMAIN-SUFFIX,hexin.cn
 DOMAIN-SUFFIX,123ths.com
 DOMAIN-SUFFIX,touzime.com
 DOMAIN-SUFFIX,hxkba.com
+# Umeng analytics, Getui push, and domestic finance/content services
+DOMAIN-SUFFIX,umeng.com
+DOMAIN-SUFFIX,umengcloud.com
+DOMAIN-SUFFIX,emhudong.cn
+DOMAIN-SUFFIX,sinastorage.com
+DOMAIN-SUFFIX,getui.com
+DOMAIN-SUFFIX,yangjibao.com
+DOMAIN,tradenavigator2mix.18.cn
+DOMAIN-SUFFIX,pangolin-sdk-toutiao.com
+DOMAIN-SUFFIX,pangolin-sdk-toutiao1.com
 ################## EOF ##################

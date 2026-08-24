@@ -8,7 +8,7 @@
     },
     "ip/china_ip": {
       "license": "CC-BY-SA-2.0",
-      "sha256": "73d639d952c1e77e699da69deebfb16683ad0cda15de771e19ee004616815740",
+      "sha256": "6b3bd6e3418623df9aa84d64924fceb64abbe48eddeccf4155bcdac1e0d560a2",
       "source": "List/ip/china_ip.conf",
       "surge": "surge/rules/common/ip/china_ip.list"
     },
@@ -32,7 +32,7 @@
     },
     "ip/telegram": {
       "license": "AGPL-3.0-only",
-      "sha256": "62025cb8bdd07176a628886d32f487458bb270228062a460aee4f70c20a75d55",
+      "sha256": "27f6bab896e98ec9631fd187ff5147fb101260fc7a322c0dc994bbd27ed0a81f",
       "source": "List/ip/telegram.conf",
       "surge": "surge/rules/common/ip/telegram.list"
     },
@@ -62,7 +62,7 @@
     },
     "non_ip/direct": {
       "license": "AGPL-3.0-only",
-      "sha256": "36d007df784ca629f228a60db8b66a9b4f65154de4704213bf70a1e05fd12291",
+      "sha256": "1ab4dbeca342bfa80c8eb18da5ea387543bf612a6c0a3f263cb78d46f2bbe0f2",
       "source": "List/non_ip/direct.conf",
       "surge": "surge/rules/common/non_ip/direct.list"
     },
@@ -99,6 +99,6 @@
   },
   "note": "Static snapshot only; clients use this repository, not the upstream URL.",
   "schema": 1,
-  "source_commit": "f1c1c294a05d3a81901e7312bd4160382cc39970",
+  "source_commit": "668b65dfd66569f7f1d6c6217d8187e4ec096dad",
   "source_repository": "https://github.com/SukkaLab/ruleset.skk.moe"
 }

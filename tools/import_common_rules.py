@@ -24,6 +24,8 @@ from common_rules import (
 ROOT = Path(__file__).resolve().parents[1]
 DESTINATION = ROOT / "surge" / "rules" / "common"
 LOCK_FILE = ROOT / "common-rules.lock.json"
+LOCAL_ADDITIONS_MARKER = "# Graham-maintained additions:"
+EOF_MARKER = "################## EOF ##################"
 
 
 def fetch(url: str) -> bytes:
@@ -46,6 +48,51 @@ def resolve_commit(ref: str) -> str:
     return commit
 
 
+def preserve_local_additions(destination: Path, upstream: bytes) -> bytes:
+    """Keep the reviewed repository-local block across upstream refreshes."""
+    if not destination.is_file():
+        return upstream
+
+    current_lines = destination.read_text(encoding="utf-8").splitlines()
+    try:
+        start = next(
+            index
+            for index, line in enumerate(current_lines)
+            if line.startswith(LOCAL_ADDITIONS_MARKER)
+        )
+    except StopIteration:
+        return upstream
+
+    end = next(
+        (
+            index
+            for index in range(start + 1, len(current_lines))
+            if current_lines[index] == EOF_MARKER
+        ),
+        len(current_lines),
+    )
+    local_lines = current_lines[start:end]
+    upstream_lines = upstream.decode("utf-8").splitlines()
+    existing = {line.strip() for line in upstream_lines}
+    retained_lines: list[str] = []
+    retained_rule_count = 0
+    for line in local_lines:
+        if line.startswith(("#", ";", "//")):
+            retained_lines.append(line)
+        elif line and line.strip() not in existing:
+            retained_lines.append(line)
+            retained_rule_count += 1
+    if retained_rule_count == 0:
+        return upstream
+
+    insertion = next(
+        (index for index, line in enumerate(upstream_lines) if line == EOF_MARKER),
+        len(upstream_lines),
+    )
+    merged = upstream_lines[:insertion] + retained_lines + upstream_lines[insertion:]
+    return ("\n".join(merged) + "\n").encode("utf-8")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Replace local common rules with a reviewed upstream snapshot"
@@ -59,13 +106,14 @@ def main() -> int:
         locked_files: dict[str, object] = {}
         for name in COMMON_RULE_PATHS:
             source = upstream_path(name)
-            content = fetch(f"{UPSTREAM_RAW}/{commit}/{source}")
-            content.decode("utf-8")
+            upstream_content = fetch(f"{UPSTREAM_RAW}/{commit}/{source}")
+            upstream_content.decode("utf-8")
             destination = DESTINATION / f"{name}.list"
+            content = preserve_local_additions(destination, upstream_content)
             outputs[destination] = content
             locked_files[name] = {
                 "license": license_for(name),
-                "sha256": hashlib.sha256(content).hexdigest(),
+                "sha256": hashlib.sha256(upstream_content).hexdigest(),
                 "source": source,
                 "surge": str(destination.relative_to(ROOT)),
             }
