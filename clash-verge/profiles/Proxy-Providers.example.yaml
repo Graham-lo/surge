@@ -1,6 +1,6 @@
 # Copy provider entries into Universal.yaml or Full.yaml locally.
 # Keep the real URLs out of Git. Put the score first, followed by service tags.
-# Supported tags: [AI] [REG] [BIN] [BYB] [OKX] [TV] [APNS] [APPLE] [GIT].
+# Supported tags: [AI] [REG] [MEDIA] [BIN] [BYB] [OKX] [TV] [APNS] [APPLE] [GIT].
 proxy-providers:
   residential-example:
     type: http
@@ -23,6 +23,20 @@ proxy-providers:
     interval: 3600
     override:
       additional-prefix: '[001][REG][BIN][BYB][OKX][TV][APNS][APPLE][GIT] '
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+      timeout: 8000
+      lazy: true
+      expected-status: 204
+  media-example:
+    type: http
+    url: REPLACE_WITH_PRIVATE_SUBSCRIPTION_URL
+    path: ./proxy_providers/media.yaml
+    interval: 3600
+    override:
+      additional-prefix: '[001][MEDIA] '
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204

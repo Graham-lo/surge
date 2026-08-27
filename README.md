@@ -47,6 +47,7 @@ same behavior across clients:
 
 - `[AI]`: clean residential AI candidates.
 - `[REG]`: normal daily candidates.
+- `[MEDIA]`: selected high-throughput Telegram and streaming candidates; IP purity is not a ranking input.
 - `[BIN]`, `[BYB]`, `[OKX]`: exchange candidates.
 - `[TV]`, `[APNS]`, `[APPLE]`, `[GIT]`: service-specific candidates.
 - `[PREFERRED]`: optional priority boost in the Surge iOS Smart group.

@@ -17,6 +17,7 @@ Policy tags control membership without exposing provider names:
 
 - `[AI]`: clean residential policies for AI.
 - `[REG]`: normal daily policies.
+- `[MEDIA]`: selected high-throughput Telegram and streaming policies; IP purity is not a ranking input.
 - `[BIN]`, `[BYB]`, `[OKX]`: exchange-specific candidates.
 - `[TV]`, `[APNS]`, `[APPLE]`, `[GIT]`: service-specific candidates.
 - `[PREFERRED]`: optional priority boost in the iOS Smart group.

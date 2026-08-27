@@ -3,13 +3,15 @@
 # Never commit the copied file. Replace only the commented examples locally.
 # Naming convention: [score][service tags][region] display name
 # Lower score numbers appear first in the manual selection list.
-# Supported tags: [AI] [REG] [BIN] [BYB] [OKX] [TV] [APNS] [APPLE] [GIT]
+# Supported tags: [AI] [REG] [MEDIA] [BIN] [BYB] [OKX] [TV] [APNS] [APPLE] [GIT]
 # Optional [PREFERRED] gives a regular policy higher priority in the iOS Smart group.
 # One endpoint may be declared more than once with different names when rankings differ by service.
 #
 # [001][AI][SG] Residential Primary = <protocol>, <host>, <port>, <private parameters>
 # [001][REG][BIN][BYB][OKX][TV][APNS][APPLE][GIT][PREFERRED][SG] Regular Primary = <protocol>, <host>, <port>, <private parameters>
 # [002][REG][BIN][BYB][OKX][TV][APNS][APPLE][GIT][HK] Regular Backup = <protocol>, <host>, <port>, <private parameters>
+# [001][MEDIA][HK] High-throughput Media Primary = <protocol>, <host>, <port>, <private parameters>
+# [002][MEDIA][HK] High-throughput Media Backup = <protocol>, <host>, <port>, <private parameters>
 
 # Local fail-closed sentinel for sensitive automatic groups. Keep this active;
 # it is deliberately unreachable and never sends traffic off the device.
