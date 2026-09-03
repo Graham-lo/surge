@@ -5,6 +5,7 @@ payload:
   - 'DOMAIN,ws2.bybit.biz'
   - 'DOMAIN,api3.bybit.biz'
   - 'DOMAIN,api3.ng-dex.com'
+  - 'DOMAIN,www.turingfraud.net'
   - 'DOMAIN,spdtest-akm.byd3c3.com'
   - 'DOMAIN,spdtest-teo.bynbc.com'
   - 'DOMAIN,spdtest-ws.ng-dex.com'

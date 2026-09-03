@@ -27,6 +27,12 @@ DOMAIN,ws2.bybit.biz
 DOMAIN,api3.bybit.biz
 DOMAIN,api3.ng-dex.com
 
+# Risk-control / device fingerprint. The asset, transfer and withdrawal pages
+# block on this before rendering. Tencent HK (AS132203), measured 2026-09-03
+# from the gateway: 13-17 ms direct against 70-71 ms through the Bybit policy
+# group, on 6 samples each.
+DOMAIN,www.turingfraud.net
+
 # Client-side route probes.
 DOMAIN,spdtest-akm.byd3c3.com
 DOMAIN,spdtest-teo.bynbc.com
