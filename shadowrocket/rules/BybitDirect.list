@@ -3,6 +3,8 @@
 # FORMAT: Shadowrocket RULE-SET (policy omitted)
 
 DOMAIN,ws2.bybit.biz
+DOMAIN,api3.bybit.biz
+DOMAIN,api3.ng-dex.com
 DOMAIN,spdtest-akm.byd3c3.com
 DOMAIN,spdtest-teo.bynbc.com
 DOMAIN,spdtest-ws.ng-dex.com

@@ -2,15 +2,30 @@
 # FORMAT: Surge RULE-SET (policy omitted)
 # SOURCE: local gateway traffic observation, 2026-08-14 to 2026-08-18
 # MIRROR: Graham-lo/surge
-# UPDATED: 2026-08-18
+# UPDATED: 2026-09-03
 # NOTE: Bybit endpoints that must bypass the proxy. ws2.bybit.biz resolves to Tencent
 # Cloud and measured 17-21 ms direct against 85-99 ms through any proxy, the
 # largest single saving in this profile. The spdtest hosts are the client's own
 # route probes and must see the direct network to choose correctly. Reference
 # this set with the DIRECT policy immediately before Bybit.list.
+#
+# Only list the hosts that are actually carried by a China-reachable acceleration
+# network. Membership is per-FQDN on purpose: within the same apex, api3.bybit.biz
+# is Tencent EdgeOne while api/api1/api2/api4/api5/ws/ws1/ws3.bybit.biz are Akamai
+# or CloudFront and are slower direct, so a DOMAIN-SUFFIX rule here would be wrong.
 
 # Market data.
 DOMAIN,ws2.bybit.biz
+
+# Account and asset APIs. These carry the transfer / deposit / withdrawal pages.
+# Measured 2026-09-03 from the gateway, HTTPS to /v5/market/time, direct against
+# the Bybit policy group:
+#   api3.bybit.biz   Tencent EdgeOne (AS139341)   16 ms   vs  TLS 147-205 ms, TTFB 225-309 ms
+#   api3.ng-dex.com  Wangsu CDN (public.bybithk.whecloud.com)  53 ms  vs  TTFB 254-329 ms
+# The proxy penalty is not node-specific: all seven candidate nodes measured
+# 620-970 ms against 111-120 ms direct on api3.bybit.biz.
+DOMAIN,api3.bybit.biz
+DOMAIN,api3.ng-dex.com
 
 # Client-side route probes.
 DOMAIN,spdtest-akm.byd3c3.com

@@ -182,8 +182,8 @@
     "BybitDirect": {
       "clash_verge": "clash-verge/rules/BybitDirect.yaml",
       "legacy_surge": "rules/BybitDirect.list",
-      "rule_count": 8,
-      "sha256": "ee4505ee68d7a10b1443dcdeed59d2af6870bdb9c8e25564f9759263dc0614b3",
+      "rule_count": 10,
+      "sha256": "78aac52f0d86174bf0e27d4c43652a81137e9d3a84493a3dbc8b6e01504bc704",
       "shadowrocket": "shadowrocket/rules/BybitDirect.list",
       "surge": "surge/rules/BybitDirect.list"
     },
