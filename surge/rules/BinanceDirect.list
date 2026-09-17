@@ -1,29 +1,42 @@
 # NAME: Binance Direct
 # FORMAT: Surge RULE-SET (policy omitted)
-# SOURCE: local gateway traffic observation, 2026-08-14 to 2026-08-18
+# SOURCE: forced-DIRECT measurements from the home line, 2026-09-18
 # MIRROR: Graham-lo/surge
-# UPDATED: 2026-08-18
-# NOTE: Binance endpoints that must bypass the proxy. The IP list is the domestic
-# acceleration range the app streams its order book from; measured on 2026-08-18
-# carrying live depth data over DIRECT. bscdnweb hosts sit on China Unicom
-# Guangdong and measured 172 ms proxied against 28 ms direct. Reference this set
-# with the DIRECT policy immediately before Binance.list.
+# UPDATED: 2026-09-18
+# NOTE: Binance endpoints that are reachable from mainland China without a proxy,
+# so they should bypass it. Reference this set with the DIRECT policy immediately
+# before Binance.list.
+#
+# 2026-09-18 revision. The August list forced the *.binance.com websocket hosts
+# DIRECT, but that path is dead: fstream/stream/dstream/nbstream/ws-api
+# .binance.com now get a poisoned A record domestically and are reset during the
+# TLS handshake even when dialled on their real IPs, so every entry below was
+# re-measured under a forced-DIRECT rule before being kept or added. Blocking is
+# per hostname, not per domain: fstream.binance.me connects while
+# fapi.binance.me does not, so nothing here may be widened to a DOMAIN-SUFFIX.
 
-# Market data and API hosts.
-DOMAIN,ws-api.binance.com
-DOMAIN,stream.binance.com
-DOMAIN,fstream.binance.com
-DOMAIN,dstream.binance.com
-DOMAIN,nbstream.binance.com
-DOMAIN,edge-api.saasexch.com
-DOMAIN,aad90d5c0e88c4b4285bd912f64d970d-1403944741.ap-northeast-1.elb.amazonaws.com
-DOMAIN,bin-prod-new-websocket-alb-1463526464.ap-northeast-1.elb.amazonaws.com
+# Futures market push. 101 Switching Protocols over DIRECT with live production
+# frames, TLS handshake ~0.30s. These carry the real book, not testnet.
+DOMAIN,stream.binancefuture.com
+DOMAIN,dstream.binancefuture.com
+DOMAIN,fstream.binancefuture.com
+DOMAIN,fstream.binance.me
 
-# Static asset CDN on China Unicom Guangdong.
+# Spot public data mirrors. Push and REST both answer over DIRECT
+# (/api/v3/klines returns 200 in ~0.33s); data.binance.vision serves the
+# historical archives.
+DOMAIN,data-stream.binance.vision
+DOMAIN,data-api.binance.vision
+DOMAIN,data.binance.vision
+
+# Static asset CDN on China Unicom Guangdong. Answers in 30-40ms over DIRECT.
 DOMAIN,static.bscdnweb.com
 DOMAIN,public.bscdnweb.com
 
-# Domestic acceleration addresses.
+# Domestic acceleration addresses used by the Binance iPhone app itself. All 25
+# still accept TCP 443 over DIRECT and present *.bsappapi.cc or a Binance-owned
+# certificate, so they stay. They only fire when a Binance app host resolves onto
+# them; our own app never dials these.
 IP-CIDR,39.108.55.122/32,no-resolve
 IP-CIDR,39.108.92.184/32,no-resolve
 IP-CIDR,39.108.179.41/32,no-resolve
