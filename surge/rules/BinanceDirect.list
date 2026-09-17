@@ -15,11 +15,27 @@
 # per hostname, not per domain: fstream.binance.me connects while
 # fapi.binance.me does not, so nothing here may be widened to a DOMAIN-SUFFIX.
 
-# Futures market push. 101 Switching Protocols over DIRECT with live production
-# frames, TLS handshake ~0.30s. These carry the real book, not testnet.
+# Futures market push, production book. dstream.binance.me resolves to the real
+# AWS Tokyo addresses domestically (no poisoning) and serves the merged UM+CM
+# stream universe: kline/ticker/aggTrade/markPrice/bookTicker all flow. Measured
+# over DIRECT: TLS ~0.27-0.39s, handshake 361-423ms, first frame 666-762ms, and
+# ~30ms lower push lag than the same streams over the SG node, with no frame loss
+# (575 vs 572 aggTrade over an identical 25s window run in parallel).
+DOMAIN,dstream.binance.me
+#
+# CAUTION: the *.binancefuture.com hosts below reach a testnet, not production.
+# Their 24hrTicker matches testnet.binancefuture.com field for field (121.4B
+# quote volume / 316k trades against production's 14.0B / 4.31M). They stay
+# DIRECT only so the in-app host probe can use them as a control group; never
+# point the app's stream host at one.
 DOMAIN,stream.binancefuture.com
 DOMAIN,dstream.binancefuture.com
 DOMAIN,fstream.binancefuture.com
+#
+# fstream.binance.me is production but half dead: only bookTicker/depth push,
+# while kline/ticker/aggTrade/markPrice accept the SUBSCRIBE (result:null) and
+# then send nothing, on every path shape (/ws, /stream, /public/ws,
+# /public/stream). Same symptom as fstream.binance.com. Kept DIRECT for depth.
 DOMAIN,fstream.binance.me
 
 # Spot public data mirrors. Push and REST both answer over DIRECT
